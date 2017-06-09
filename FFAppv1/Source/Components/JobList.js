@@ -5,10 +5,13 @@ import {connect} from 'react-redux';
 
 import JobListItem from '../Components/JobListItem';
 import JobSection from '../Components/JobSection';
+import JobCreate from '../Components/JobCreate'
+import {Card, CardSection, Button, Confirm} from '../Components/Common'
 
 class JobList extends Component {
 	constructor(props) {
 		super(props);
+  	showForm = false
 
 		const getSectionData = (dataBlob, sectionId) => dataBlob[sectionId];
 		const getRowData = (dataBlob, sectionId, rowId) => dataBlob[`${rowId}`];
@@ -82,19 +85,44 @@ class JobList extends Component {
     return { dataBlob, sectionIds, rowIds };
  	}
 
+	 onAddJobPress(){
+		 showForm=true
+	 }
+
+	 renderButton(){
+		if(showForm===false){
+			return (
+				<Button onPress={this.onAddJobPress.bind(this)}>
+					Post a Job!
+				</Button>
+			)
+		}
+		//showForm=false
+		return (
+				<JobCreate />
+		 )
+	 }
+
+
 	render() {
 		return(
 		
-			<ListView 
-			 removeClippedSubviews={false}
-			 style = {styles.container}
-			 dataSource = {this.state.dataSource} 
-			 //contentContainerStyle={{flex: 1, marginTop: 20}} 
-			 renderRow = {this.renderRow}
-			 renderSeparator = {(sectionId, rowId) => <View key={rowId} style={styles.separator}/>}
-			 renderSectionHeader={this.renderSectionHeader}
-			/>
-		
+			<Card>
+					<JobCreate />
+
+				<CardSection>
+					<ListView 
+					removeClippedSubviews={false}
+					style = {styles.container}
+					dataSource = {this.state.dataSource} 
+					//contentContainerStyle={{flex: 1, marginTop: 20}} 
+					renderRow = {this.renderRow}
+					renderSeparator = {(sectionId, rowId) => <View key={rowId} style={styles.separator}/>}
+					renderSectionHeader={this.renderSectionHeader}
+					/>
+				</CardSection>
+
+			</Card>
 		
 		);
 	}
