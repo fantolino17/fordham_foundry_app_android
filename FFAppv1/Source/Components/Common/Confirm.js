@@ -3,7 +3,7 @@ import {Text,View,Modal} from 'react-native'
 import {CardSection} from './CardSection'
 import {Button} from './Button'
 
-const Confirm = ({children,visible,onAccept,onDecline}) => {
+const Confirm = ({children,visible,onReturn}) => {
   const {containerStyle,textStyle,cardSectionStyle} = styles
   return(
     <Modal
@@ -13,16 +13,15 @@ const Confirm = ({children,visible,onAccept,onDecline}) => {
       visible={visible}
     >
       <View style={containerStyle}>
-      <CardSection style={cardSectionStyle}>
-        <Text style={textStyle}>
-          {children}
-        </Text>
-      </CardSection>
+        <CardSection style={cardSectionStyle}>
+          <View style={textStyle}>
+            {children}
+          </View>
+        </CardSection>
 
-      <CardSection>
-        <Button onPress={onAccept}>Yes</Button>
-        <Button onPress={onDecline}>No</Button>
-      </CardSection>
+        <CardSection>
+          <Button onPress={onReturn}>Return</Button>
+        </CardSection>
       </View>
     </Modal>
   )
@@ -34,9 +33,6 @@ const styles={
   },
   textStyle:{
     flex:1,
-    fontSize:18,
-    textAlign:'center',
-    lineHeight: 40
   },
   containerStyle:{
     backgroundColor: 'rgba(0,0,0,0.75)',
