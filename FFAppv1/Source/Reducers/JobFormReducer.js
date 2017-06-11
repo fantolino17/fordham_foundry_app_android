@@ -3,6 +3,7 @@ import {JOB_UPDATE, JOB_CREATE, JOBS_FETCH_SUCCESS} from '../Actions/types'
 const INITIAL_STATE = {
   name: '',
   email: '',
+  description: '',
   category: ''
 }
 
