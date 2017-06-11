@@ -9,11 +9,11 @@ export const jobUpdate = ({prop, value}) => {
   }
 }
 
-export const jobCreate = ({name, email, category}) => {
+export const jobCreate = ({name, email, description, category}) => {
   
   return (dispatch) => {
     firebase.database().ref(`/jobBoard/${category}`)
-      .push({name,email})
+      .push({name,email,description})
       .then( () => {
         dispatch({type: JOB_CREATE})
       })
