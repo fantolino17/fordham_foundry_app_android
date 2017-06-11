@@ -4,7 +4,8 @@ const INITIAL_STATE = {
   name: '',
   email: '',
   description: '',
-  category: ''
+  category: '',
+  user: null
 }
 
 export default (state = INITIAL_STATE, action) => {
