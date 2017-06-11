@@ -11,7 +11,6 @@ import {Card, CardSection, Button, Confirm} from '../Components/Common'
 class JobList extends Component {
 	constructor(props) {
 		super(props);
-  	showForm = false
 
 		const getSectionData = (dataBlob, sectionId) => dataBlob[sectionId];
 		const getRowData = (dataBlob, sectionId, rowId) => dataBlob[`${rowId}`];
@@ -26,6 +25,7 @@ class JobList extends Component {
 		const { dataBlob, sectionIds, rowIds } = this.formatData(this.props.jobs);
 		this.state = {
 		  dataSource: ds.cloneWithRowsAndSections(dataBlob, sectionIds, rowIds),
+			showModal: false,			
 		};
 	}
 
@@ -85,31 +85,33 @@ class JobList extends Component {
     return { dataBlob, sectionIds, rowIds };
  	}
 
-	 onAddJobPress(){
-		 showForm=true
+	 renderModal(){
+		 this.setState({showModal: true})
 	 }
 
-	 renderButton(){
-		if(showForm===false){
-			return (
-				<Button onPress={this.onAddJobPress.bind(this)}>
-					Post a Job!
-				</Button>
-			)
-		}
-		//showForm=false
-		return (
-				<JobCreate />
-		 )
+	 onReturn(){
+		this.setState({showModal: false})
 	 }
-
+	
 
 	render() {
 		return(
 		
 			<Card>
-					<JobCreate />
 
+				<Confirm
+          visible={this.state.showModal}
+          onReturn={this.onReturn.bind(this)}
+				>
+					<JobCreate style={{flex:1}}/>
+				</Confirm>
+
+				<CardSection>	
+					<Button onPress={this.renderModal.bind(this)}>
+						Post to Job Board!
+					</Button>
+				</CardSection>
+				
 				<CardSection>
 					<ListView 
 					removeClippedSubviews={false}
