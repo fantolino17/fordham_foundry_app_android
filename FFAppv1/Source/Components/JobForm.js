@@ -25,13 +25,23 @@ class JobForm extends Component{
             onChangeText={text => this.props.jobUpdate({prop: 'email', value: text})}
           />
         </CardSection>
+        
+        <CardSection>
+          <Input 
+            label="Job Description:"
+            placeholder="Lookin' for..."
+            value={this.props.description}
+            onChangeText={text => this.props.jobUpdate({prop: 'description', value: text})}
+          />
+        </CardSection>
 
         <CardSection style={{flexDirection:'column'}}>
           <Text style={styles.pickerTextStyle}>Category</Text>
           <Picker
             selectedValue={this.props.category}
             onValueChange={cat => {this.props.jobUpdate({prop: 'category' , value: cat})}}
-            style={{flex:1}}
+            itemStyle={styles.itemStyle}
+            style={styles.pickerStyle}
           >
             <Picker.Item label="Programming" value="programming" />
             <Picker.Item label="IT" value="it" />
@@ -39,9 +49,7 @@ class JobForm extends Component{
 
           </Picker>
         </CardSection>
-
       </View>
-
     )
   }
 }
@@ -50,12 +58,24 @@ const styles = {
   pickerTextStyle:{
     fontSize: 18,
     paddingLeft: 23
+  },
+  itemStyle:{
+    fontSize: 15,
+    height: 75,
+    color: 'black',
+    textAlign: 'center',
+    fontWeight: 'bold',
+  },
+  pickerStyle:{
+    //flex:1, 
+    //width: 100,
+    //height: 200
   }
 }
  
 mapStateToProps = (state) => {
-  const {name,email,category} = state.jobForm
-  return {name,email,category}
+  const {name,email,description,category} = state.jobForm
+  return {name,email,description,category}
 }
 
 export default connect(mapStateToProps, {jobUpdate})(JobForm)

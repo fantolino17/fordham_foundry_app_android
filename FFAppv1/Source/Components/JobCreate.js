@@ -7,9 +7,13 @@ import JobForm from './JobForm'
 class JobCreate extends Component {
 
   onButtonPress(){
-    const {name, email, category} = this.props
+    const {name, email, description, category} = this.props
 
-    this.props.jobCreate({name, email, category: category || 'Programmer'})
+    this.props.jobCreate({
+      name: name || 'No Name Provided', 
+      email: email || 'No Email Provided', 
+      description: description || 'No Description Provided', 
+      category: category || 'Programmer'})
   }
 
   display(){
@@ -39,8 +43,8 @@ class JobCreate extends Component {
 }
 
 const mapStateToProps = (state) => {
-  const {name, email, category} = state.jobForm
-  return {name, email, category} 
+  const {name, email, description, category} = state.jobForm
+  return {name, email, description, category} 
 }
 
 export default connect(mapStateToProps,{jobUpdate, jobCreate, fetchJobs})(JobCreate)
