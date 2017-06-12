@@ -1,8 +1,8 @@
-import React, {Component} from 'react'
-import {View, Text, Picker} from 'react-native'
-import {CardSection, Input} from './Common'
-import {connect} from 'react-redux'
-import {jobUpdate} from '../Actions'
+import React, {Component} from 'react';
+import {View, Text, Picker} from 'react-native';
+import {CardSection, Input} from '../../Components/Common';
+import {connect} from 'react-redux';
+import {jobUpdate} from '../../Actions';
 
 class JobForm extends Component{
   render(){

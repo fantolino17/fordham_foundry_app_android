@@ -37,7 +37,6 @@ class App extends Component {
 			<Provider store = {store}>
 				<ViewContainer>
 				<StatusBarbg/>
-				<NavBar/>
 				<Tabs/>
 				</ViewContainer>
 			</Provider>

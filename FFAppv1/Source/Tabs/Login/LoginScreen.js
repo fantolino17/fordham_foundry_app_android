@@ -1,11 +1,18 @@
 import React, {Component} from 'react'
 import LoginForm from '../../Components/LoginForm'
+import {View} from 'react-native';
+
+import NavBar from '../../Components/Header/NavBar';
+import ViewContainer from '../../Components/Common/ViewContainer';
 
 class LoginScreen extends Component {
 
   render(){
     return (
-      <LoginForm />
+    	<ViewContainer>
+			<NavBar wayto = {this.props.navigation}/>
+      		<LoginForm/>
+      	</ViewContainer>
     )
   }
 }

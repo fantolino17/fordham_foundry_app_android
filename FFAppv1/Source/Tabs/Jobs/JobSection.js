@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {Button, Text, TouchableWithoutFeedback, View, LayoutAnimation, StyleSheet} from 'react-native';
-import {CardSection} from './Common/CardSection';
+import {CardSection} from '../../Components/Common/CardSection';
 import {connect} from 'react-redux';
-import * as actions from '../Actions';
+import * as actions from '../../Actions';
 
 class JobSection extends Component {
 	render() {

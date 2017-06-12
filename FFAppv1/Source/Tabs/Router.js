@@ -53,6 +53,7 @@ export const Tabs = TabNavigator ({
 },
 
 	{ 
+		initialRouteName: 'Bubble',
 		tabBarOptions: {
 			activeTintColor: "gold",
 			inactiveTintColor: "white",
