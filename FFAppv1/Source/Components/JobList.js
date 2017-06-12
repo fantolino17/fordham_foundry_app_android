@@ -5,6 +5,8 @@ import {connect} from 'react-redux';
 
 import JobListItem from '../Components/JobListItem';
 import JobSection from '../Components/JobSection';
+import JobCreate from '../Components/JobCreate'
+import {Card, CardSection, Button, Confirm} from '../Components/Common'
 
 class JobList extends Component {
 	constructor(props) {
@@ -23,6 +25,7 @@ class JobList extends Component {
 		const { dataBlob, sectionIds, rowIds } = this.formatData(this.props.jobs);
 		this.state = {
 		  dataSource: ds.cloneWithRowsAndSections(dataBlob, sectionIds, rowIds),
+			showModal: false,			
 		};
 	}
 
@@ -82,19 +85,46 @@ class JobList extends Component {
     return { dataBlob, sectionIds, rowIds };
  	}
 
+	 renderModal(){
+		 this.setState({showModal: true})
+	 }
+
+	 onReturn(){
+		this.setState({showModal: false})
+	 }
+	
+
 	render() {
 		return(
 		
-			<ListView 
-			 removeClippedSubviews={false}
-			 style = {styles.container}
-			 dataSource = {this.state.dataSource} 
-			 //contentContainerStyle={{flex: 1, marginTop: 20}} 
-			 renderRow = {this.renderRow}
-			 renderSeparator = {(sectionId, rowId) => <View key={rowId} style={styles.separator}/>}
-			 renderSectionHeader={this.renderSectionHeader}
-			/>
-		
+			<Card>
+
+				<Confirm
+          visible={this.state.showModal}
+          onReturn={this.onReturn.bind(this)}
+				>
+					<JobCreate style={{flex:1}}/>
+				</Confirm>
+
+				<CardSection>	
+					<Button onPress={this.renderModal.bind(this)}>
+						Post to Job Board!
+					</Button>
+				</CardSection>
+				
+				<CardSection>
+					<ListView 
+					removeClippedSubviews={false}
+					style = {styles.container}
+					dataSource = {this.state.dataSource} 
+					//contentContainerStyle={{flex: 1, marginTop: 20}} 
+					renderRow = {this.renderRow}
+					renderSeparator = {(sectionId, rowId) => <View key={rowId} style={styles.separator}/>}
+					renderSectionHeader={this.renderSectionHeader}
+					/>
+				</CardSection>
+
+			</Card>
 		
 		);
 	}
