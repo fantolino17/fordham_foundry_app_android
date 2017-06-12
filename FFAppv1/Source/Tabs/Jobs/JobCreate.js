@@ -1,10 +1,10 @@
-import React, {Component} from 'react'
-import {connect} from 'react-redux'
-import {Text} from 'react-native'
-import firebase from 'firebase'
-import {jobUpdate, jobCreate, fetchJobs} from '../Actions'
-import {Card, CardSection, Button, Confirm} from './Common'
-import JobForm from './JobForm'
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {Text} from 'react-native';
+import firebase from 'firebase';
+import {jobUpdate, jobCreate, fetchJobs} from '../../Actions';
+import {Card, CardSection, Button, Confirm} from '../../Components/Common';
+import JobForm from './JobForm';
 
 class JobCreate extends Component {
   constructor(props){

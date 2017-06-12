@@ -2,19 +2,19 @@ import React, {Component} from 'react';
 import {ListView} from 'react-native';
 import {connect} from 'react-redux';
 
-import ListItem from '../Components/ListItem';
+import InfoItem from './InfoItem';
 
-class LibraryList extends Component {
+class InfoList extends Component {
 	componentWillMount() {
 		const ds = new ListView.DataSource({
 			rowHasChanged: (r1, r2) => r1 !== r2
 		});
 
-		this.dataSource = ds.cloneWithRows(this.props.libraries)
+		this.dataSource = ds.cloneWithRows(this.props.information)
 	}
 
-	renderRow(library) {
-		return <ListItem library = {library}/>;
+	renderRow(info) {
+		return <InfoItem info = {info}/>;
 	}
 
 	render() {
@@ -26,7 +26,7 @@ class LibraryList extends Component {
 }
 
 const mapStateToProps = state => {
-	return {libraries: state.libraries};
+	return {information: state.information};
 };
 
-export default connect(mapStateToProps)(LibraryList);
+export default connect(mapStateToProps)(InfoList);

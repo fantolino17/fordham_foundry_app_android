@@ -3,10 +3,10 @@ import {ListView, StyleSheet, View, ScrollView} from 'react-native';
 import {connect} from 'react-redux';
 //import * as actions from '../Actions';
 
-import JobListItem from '../Components/JobListItem';
-import JobSection from '../Components/JobSection';
-import JobCreate from '../Components/JobCreate'
-import {Card, CardSection, Button, Confirm} from '../Components/Common'
+import JobListItem from './JobListItem';
+import JobSection from './JobSection';
+import JobCreate from './JobCreate'
+import {Card, CardSection, Button, Confirm} from '../../Components/Common'
 
 class JobList extends Component {
 	constructor(props) {

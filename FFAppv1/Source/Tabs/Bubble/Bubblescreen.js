@@ -1,34 +1,27 @@
 import React, {Component} from 'react';
-import {ScrollView, Text, View, StyleSheet, Animated, Button} from 'react-native';
+import {ScrollView, Text, View, StyleSheet, Image, Animated, Button, TouchableOpacity} from 'react-native';
 
-import LibraryList from '../../Components/LibraryList';
-import Icon from 'react-native-vector-icons/SimpleLineIcons';
-import * as Animatable from 'react-native-animatable';
+import InfoList from './InfoList';
+import NavBar from '../../Components/Header/NavBar';
+import ViewContainer from '../../Components/Common/ViewContainer';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 class HomeScreen extends Component {
 	render () {
 		return (
-			<ScrollView ref = "scrollView" style = {{flex: 1}}>
-			<View alignItems = 'center'>
+			<ViewContainer>
+			<NavBar wayto = {this.props.navigation}/>
+			<ScrollView>
+			<Image 
+				source={require('../../../Images/EthanKphotoshop.jpg')}
+				style={{height:100, width: undefined}}
+			/>
+			
 			<Text style = {styles.mainText1}> You have a great business idea. </Text>
 			<Text style = {styles.mainText2}>Now what?</Text>
-			<Animatable.View animation="pulse" easing="ease-out" iterationCount="infinite">
-					<Icon name = "arrow-down" size = {15}/>
-					<Icon name = "arrow-down" size = {15}/>
-			</Animatable.View>
-			<Text> About </Text>
-			<Text> About </Text>
-			<Text> About </Text>
-			<Text> About </Text>
-			<Text> About </Text>
-			<Text> About </Text>
-			<Text> About </Text>
-			<Text> About </Text>
-			<Text> About </Text>
-			</View>
-			<LibraryList/>
-			<Button title  = "Scroll to Top" onPress = {() => this.refs.scrollView.scrollTo({y: 0, animated: true})}/>
+			<InfoList/>
 			</ScrollView>
+			</ViewContainer>
 			);
 	}
 }

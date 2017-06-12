@@ -1,7 +1,7 @@
 import React,{Component} from 'react'
 import {Text} from 'react-native'
 import {connect} from 'react-redux'
-import {Card,CardSection,Input,Button, Spinner} from './Common'
+import {Card, CardSection, Input, Button, Spinner} from './Common'
 import {emailChanged, passwordChanged, loginUser} from '../Actions'
 
 class LoginForm extends Component{
@@ -16,7 +16,7 @@ class LoginForm extends Component{
 
   onButtonPress(){
     const {email, password} = this.props
-    this.props.loginUser({email, password})
+    this.props.loginUser({email: email || '', password: password || ''})
     console.log(this.state)
   }
 
