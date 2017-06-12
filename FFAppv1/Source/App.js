@@ -15,7 +15,6 @@ const App = () => {
 		<Provider store = {createStore(reducers)}>
 		<ViewContainer>
 		<StatusBarbg/>
-		<NavBar/>
 		<Tabs/>
 		</ViewContainer>
 		</Provider>

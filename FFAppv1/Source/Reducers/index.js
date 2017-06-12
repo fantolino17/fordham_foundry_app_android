@@ -1,11 +1,11 @@
 import {combineReducers} from 'redux';
-import LibraryReducer from './LibraryReducer';
+import InfoReducer from './InfoReducer';
 import SelectionReducer from './SelectionReducer';
 import JobReducer from './JobReducer';
 
 export default combineReducers({
-	libraries: LibraryReducer,
-	selectedLibraryId: SelectionReducer,
+	information: InfoReducer,
+	selectedInfoId: SelectionReducer,
 	jobs: JobReducer,
 	selectedJobId: SelectionReducer
 });

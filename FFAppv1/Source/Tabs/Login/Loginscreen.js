@@ -3,15 +3,15 @@ import {Text, View} from 'react-native';
 
 import NavBar from '../../Components/Header/NavBar';
 
-class Chatscreen extends Component {
+class Loginscreen extends Component {
 	render () {
 		return (
-			<View> 
+			<View>
 			<NavBar wayto = {this.props.navigation}/>
-			<Text> Hello this is the Chat page </Text>
+			<Text> Hello this is the Login page </Text>
 			</View>
 			);
 	}
 }
 
-export default Chatscreen;
+export default Loginscreen;

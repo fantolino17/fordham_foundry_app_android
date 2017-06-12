@@ -1,21 +1,40 @@
 import React from 'react';
 import {TabNavigator, StackNavigator} from 'react-navigation';
 import Icon from 'react-native-vector-icons/Ionicons';
+import Simplecon from 'react-native-vector-icons/SimpleLineIcons';
 
 import Homescreen from '../Tabs/Home/Homescreen';
 import Jobscreen from '../Tabs/Jobs/Jobscreen';
 import Bubblescreen from '../Tabs/Bubble/Bubblescreen';
 import Chatscreen from '../Tabs/Chat/Chatscreen';
+import Loginscreen from '../Tabs/Login/Loginscreen';
+//import NavBar from '../Components/Header/NavBar';
 
-
-export const Tabs = TabNavigator ({
+/*export const MainStack = StackNavigator({
 	Home: {
 		screen: Homescreen,
 		navigationOptions: {
-			tabBarLabel: 'Bubble',
+			title: 'Fordham Foundry',
+
+		}
+	},
+	Jobs: {
+		screen: Jobscreen,
+		navigationOptions: {
+			title: 'Fordham Foundry'
+		}
+	}
+})*/
+
+export const Tabs = TabNavigator (
+{
+	Home: {
+		screen: Homescreen,
+		navigationOptions: {
+			tabBarLabel: 'Home',
 			tabBarIcon: ({tintColor, focused}) => <Icon name = {focused ? "ios-home":"ios-home-outline"} size = {30} color = {focused? "gold":"white"}/>
 			}
-		},
+	},
 
 	Jobs: {
 		screen: Jobscreen,
@@ -39,12 +58,22 @@ export const Tabs = TabNavigator ({
 			tabBarLabel: 'Chat',
 			tabBarIcon: ({tintColor, focused}) => <Icon name  = {focused ? "ios-chatbubbles": "ios-chatbubbles-outline"} size = {30} color = {focused? "gold":"white"}/>
 		}
-	}
-
 	},
 
-	{ 
+	Login: {
+		screen: Loginscreen, 
+		navigationOptions: {
+			tabBarLabel: 'Login',
+			tabBarIcon: ({tintColor, focused}) => <Icon name  = {focused ? "ios-square": "ios-square-outline"} size = {30} color = {focused? "gold":"white"}/>
+		}
+	}
+
+},
+
+	{
+		initialRouteName: 'Bubble',
 		tabBarOptions: {
+			//initialRouteName: 'Bubble',
 			activeTintColor: "gold",
 			inactiveTintColor: "white",
 			iconColor: "white",
@@ -52,6 +81,14 @@ export const Tabs = TabNavigator ({
 			backgroundColor: 'maroon'
 			}
 		}
-
-}
+	}
 );
+
+/*export const Root = StackNavigator({
+	Tabs: {
+		screen: Tabs,
+	}
+}, {
+	headerMode: 'none'
+	
+})*/
