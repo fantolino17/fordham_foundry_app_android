@@ -1,7 +1,10 @@
-export const selectLibrary = (libraryId) => {
+export * from './AuthActions'
+export * from './JobFormActions'
+
+export const selectInfo = (infoId) => {
 	return {
-		type: 'select_library',
-		payload: libraryId
+		type: 'select_info',
+		payload: infoId
 	};
 };
 

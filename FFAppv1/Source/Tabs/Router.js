@@ -6,9 +6,11 @@ import Homescreen from '../Tabs/Home/Homescreen';
 import Jobscreen from '../Tabs/Jobs/Jobscreen';
 import Bubblescreen from '../Tabs/Bubble/Bubblescreen';
 import Chatscreen from '../Tabs/Chat/Chatscreen';
+import LoginScreen from '../Tabs/Login/LoginScreen'
 
 
 export const Tabs = TabNavigator ({
+
 	Home: {
 		screen: Homescreen,
 		navigationOptions: {
@@ -39,11 +41,19 @@ export const Tabs = TabNavigator ({
 			tabBarLabel: 'Chat',
 			tabBarIcon: ({tintColor, focused}) => <Icon name  = {focused ? "ios-chatbubbles": "ios-chatbubbles-outline"} size = {30} color = {focused? "gold":"white"}/>
 		}
-	}
-
 	},
 
+	Login: {
+		screen: LoginScreen,
+		navigationOptions: {
+			tabBarLabel: 'Login'
+		}
+	},
+
+},
+
 	{ 
+		initialRouteName: 'Bubble',
 		tabBarOptions: {
 			activeTintColor: "gold",
 			inactiveTintColor: "white",
@@ -52,6 +62,5 @@ export const Tabs = TabNavigator ({
 			backgroundColor: 'maroon'
 			}
 		}
-
-}
+	}
 );
