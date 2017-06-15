@@ -16,8 +16,8 @@ class LoginForm extends Component{
 
   onButtonPress(){
     const {email, password} = this.props
-    this.props.loginUser({email: email || '', password: password || ''})
-    console.log(this.state)
+    this.props.loginUser({ email, password })
+    console.log(password)
   }
 
   renderButton(){
@@ -36,6 +36,7 @@ class LoginForm extends Component{
       <Card>
         <CardSection>
           <Input
+            secureText = {false}
             onChangeText={this.onEmailChange.bind(this)}
             label="Email"
             placeholder="user@example.com"
@@ -45,7 +46,7 @@ class LoginForm extends Component{
 
         <CardSection>
           <Input 
-            secureTextEntry
+            secureText = {true}
             label="Password"
             placeholder="password"
             onChangeText={this.onPasswordChange.bind(this)}
