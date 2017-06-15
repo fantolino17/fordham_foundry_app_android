@@ -3,7 +3,7 @@ import {Text, View} from 'react-native';
 
 import ViewContainer from '../../Components/Common/ViewContainer';
 import NavBar from '../../Components/Header/NavBar';
-import ScrollableTabView from 'react-native-scrollable-tab-view';
+// import ScrollableTabView from 'react-native-scrollable-tab-view';
 import UpdateList from './UpdateList';
 import EventList from './EventList';
 
@@ -12,10 +12,12 @@ class Homescreen extends Component {
 		return (
 			<ViewContainer> 
 			<NavBar wayto = {this.props.navigation}/>
-			<ScrollableTabView tabBarTextStyle = {{fontSize: 12}}>
+			{/*<ScrollableTabView tabBarTextStyle = {{fontSize: 12}}>*/}
+				<View>
 				<UpdateList tabLabel = "Updates"/>
 				<EventList tabLabel = "Events"/>
-			</ScrollableTabView>
+				</View>
+			{/*</ScrollableTabView>*/}
 			</ViewContainer>
 			);
 	}
