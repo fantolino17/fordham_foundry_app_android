@@ -14,8 +14,8 @@ export const Tabs = TabNavigator ({
 	Home: {
 		screen: Homescreen,
 		navigationOptions: {
-			tabBarLabel: 'Bubble',
-			tabBarIcon: ({tintColor, focused}) => <Icon name = {focused ? "ios-home":"ios-home-outline"} size = {30} color = {focused? "gold":"white"}/>
+			tabBarLabel: 'Home',
+			tabBarIcon: ({tintColor, focused}) => <Icon name = {focused ? "ios-home":"ios-home-outline"} size = {25} color = {focused? "gold":"white"}/>
 			}
 		},
 
@@ -30,7 +30,7 @@ export const Tabs = TabNavigator ({
 	Bubble: {
 		screen: Bubblescreen,
 		navigationOptions: {
-			tabBarLabel: 'Bubble',
+			tabBarLabel: 'FF',
 			tabBarIcon: ({tintColor, focused}) => <Icon name  = {focused ? "ios-information-circle": "ios-information-circle-outline"} size = {30} color = {focused? "gold":"white"}/>
 		}
 	},
@@ -59,7 +59,7 @@ export const Tabs = TabNavigator ({
 			inactiveTintColor: "white",
 			iconColor: "white",
 			style: {
-			backgroundColor: 'maroon'
+			backgroundColor: 'maroon',
 			}
 		}
 	}

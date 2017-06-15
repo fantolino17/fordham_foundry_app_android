@@ -7,12 +7,6 @@ class NavBar extends Component {
 		return (
 			<View style = {styles.navBarBackground}>
 			<Text style = {styles.textInNav}> Fordham Foundry </Text>
-			<TouchableOpacity
-			style = {styles.calbutton}
-        	onPress={() => this.props.wayto.navigate('Home')}
-      		>
-      		<Icon name = "calendar" size = {15}/>
-      		</TouchableOpacity>
 			</View>
 			);
 	}

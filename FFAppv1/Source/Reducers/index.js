@@ -13,6 +13,3 @@ export default combineReducers({
 	auth: AuthReducer,
 	jobForm: JobFormReducer 
 });
-
-//console.log(store.getState());
-// {libraries: [{id:1 , title:...}]}

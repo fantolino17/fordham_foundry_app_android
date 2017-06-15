@@ -5,7 +5,9 @@ const INITIAL_STATE = {
   email: '',
   description: '',
   category: '',
-  user: null
+  user: null,
+  id: 1,
+  jb: {}
 }
 
 export default (state = INITIAL_STATE, action) => {
@@ -13,11 +15,11 @@ export default (state = INITIAL_STATE, action) => {
     case JOB_UPDATE:
       return {...state, [action.payload.prop]: action.payload.value}
     case JOB_CREATE:
-      return {INITIAL_STATE}
+      return {...state, name:'', email:'', description: '', category: '', user: null, id: state.id+1}
     case JOBS_FETCH_SUCCESS:
       console.log("job fetch successful!!")
       console.log(action.payload)
-      return action.payload
+      return {...state, jb: action.payload}
     default:
       return state
   }
