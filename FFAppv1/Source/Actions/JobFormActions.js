@@ -9,24 +9,26 @@ export const jobUpdate = ({prop, value}) => {
   }
 }
 
-export const jobCreate = ({name, email, description, category, user}) => {
+export const jobCreate = ({name, email, description, category, user, id}) => {
   
   return (dispatch) => {
-    firebase.database().ref(`/jobBoard/${category}`)
-      .push({name,email,description,user})
+    firebase.database().ref(`/jobBoard`)
+      .push({name,email,description,user,category,id})
       .then( () => {
         dispatch({type: JOB_CREATE})
       })
   }
 }
 
-export const jobDelete = ({})
+export const jobDelete = () => {
+  
+}
 
 
-export const fetchJobs = ({category}) => {
+export const fetchJobs = () => {
 
   return (dispatch) => {
-    firebase.database().ref(`/jobBoard/${category}`)
+    firebase.database().ref(`/jobBoard`)
       .on('value', snapshot => {
         dispatch({type: JOBS_FETCH_SUCCESS, payload: snapshot.val()})
     })
