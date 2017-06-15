@@ -17,3 +17,4 @@ const styles = {
   }
 };
 
+export {Spinner}
