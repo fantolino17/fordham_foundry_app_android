@@ -35,7 +35,7 @@ class JobForm extends Component{
           />
         </CardSection>
 
-        <CardSection style={{flexDirection:'column'}}>
+        <CardSection style={{flexDirection:'column', height: 300}}>
           <Text style={styles.pickerTextStyle}>Category</Text>
           <Picker
             selectedValue={this.props.category}

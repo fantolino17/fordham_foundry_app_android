@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 
 import ViewContainer from '../../Components/Common/ViewContainer';
 import NavBar from '../../Components/Header/NavBar';
-import ScrollableTabView from 'react-native-scrollable-tab-view';
+// import ScrollableTabView from 'react-native-scrollable-tab-view';
 import JobList from './JobList';
 import LofBusinesses from './LofBusinesses';
 //import JobSection from '../../Components/JobSection';
@@ -15,10 +15,12 @@ class Jobscreen extends Component {
 			
 			<ViewContainer>
 			<NavBar wayto = {this.props.navigation}/>
-			<ScrollableTabView tabBarTextStyle = {{fontSize: 12}}>
+			{/*<ScrollableTabView tabBarTextStyle = {{fontSize: 12}}>*/}
+			<View>
 				<JobList tabLabel = "Opportunities"/>
-				<LofBusinesses tabLabel = "Businesses @ Fordham"/>
-			</ScrollableTabView>
+				{/*<LofBusinesses tabLabel = "Businesses @ Fordham"/>*/}
+			</View>
+			{/*</ScrollableTabView>*/}
 			</ViewContainer>
 			
 			);

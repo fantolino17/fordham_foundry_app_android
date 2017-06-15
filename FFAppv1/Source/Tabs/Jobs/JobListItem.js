@@ -9,17 +9,16 @@ class JobListItem extends Component {
 	/*componentWillUpdate() {
 		LayoutAnimation.spring();
 	}*/
-
 	
 
 	render() {
-		const {id, title, category} = this.props.job;
+		const {expanded, jobSelected, name, category, id} = this.props
+		console.log(expanded, jobSelected, name, category, id)
 		return (
-			<TouchableWithoutFeedback onPress = {() => this.props.selectJob(id)}>
+			<TouchableWithoutFeedback onPress = { ()=>{selectJob(id)} }>
 				<View>
-					
-						<Text style = {styles.titleStyle}> {title}, {category}</Text>
-					
+				
+						<Text style = {styles.titleStyle}> {name}, {category}</Text>
 					
 				</View>
 			</TouchableWithoutFeedback>
@@ -37,10 +36,11 @@ const styles = {
 	}
 }
 
-const mapStateToProps = (state, ownProps) => {
-	expanded = state.selectedJobId === ownProps.job.id;
-
-	return {expanded};
+const mapStateToProps = (state) => {
+	//expanded = state.selectedJobId === ownProps.job.id;
+	const {expanded, jobSelected} = state.selectedJobId
+	const {id, name, category} = state.jobForm
+	return {expanded, jobSelected, name, category, id};
 };
 
 export default connect(mapStateToProps, actions)(JobListItem);
