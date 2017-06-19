@@ -102,7 +102,7 @@ class JobList extends Component {
 				)
 			}
 		}
-		return <ScrollView>{rows}</ScrollView>
+		return <ScrollView removeClippedSubviews={false}>{rows}</ScrollView>
 	}
 
 

@@ -102,11 +102,8 @@ var styles = StyleSheet.create({
         flex    : 1,
         padding : 10,
         color   :'#2a2f43',
-        fontWeight:'bold',
-        fontSize: 20
-    },
-    button      : {
-
+        fontSize: 25,
+        fontFamily: "GillSans-Bold"
     },
     buttonImage : {
         width   : 30,
