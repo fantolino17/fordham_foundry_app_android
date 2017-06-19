@@ -1,12 +1,14 @@
 import React, {Component} from 'react';
-import {View, StyleSheet, Text, TouchableOpacity} from 'react-native';
+import {View, StyleSheet, Text, TouchableOpacity, Image} from 'react-native';
 import Icon from 'react-native-vector-icons/SimpleLineIcons';
 
 class NavBar extends Component {
 	render() {
 		return (
 			<View style = {styles.navBarBackground}>
-			<Text style = {styles.textInNav}> Fordham Foundry </Text>
+			<Image source = {require('../../../Images/foundry-logo-top-bar.png')}
+				style = {{height:40, width: 150}}
+			/>
 			</View>
 			);
 	}
@@ -14,7 +16,7 @@ class NavBar extends Component {
 
 const styles = StyleSheet.create ({
 	navBarBackground: {
-		height: 44,
+		height: 64,
 		backgroundColor: "mistyrose",
 		alignItems: 'center',
 		justifyContent: 'center',

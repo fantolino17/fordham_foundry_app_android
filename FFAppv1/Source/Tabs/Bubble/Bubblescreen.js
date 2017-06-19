@@ -1,25 +1,25 @@
 import React, {Component} from 'react';
-import {ScrollView, Text, View, StyleSheet, Image, Animated, Button, TouchableOpacity} from 'react-native';
+import {ScrollView, Text, View, StyleSheet, Image, Animated, Button, TouchableOpacity, Linking} from 'react-native';
 
 import InfoList from './InfoList';
 import NavBar from '../../Components/Header/NavBar';
 import ViewContainer from '../../Components/Common/ViewContainer';
+import Panel from '../../Components/Common/Panel';
+import PanelToView from '../../Components/Common/PanelToView';
 import MediaButtons from '../../Components/Common/MediaButtons';
 import call from 'react-native-phone-call';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
-import IonIcon from 'react-native-vector-icons/Ionicons';
-import Panel from '../../Components/Common/Panel' 
+import IonIcon from 'react-native-vector-icons/Ionicons'; 
 
 
 class HomeScreen extends Component {
 	render () {
 		return (
 			<ViewContainer>
-			<NavBar wayto = {this.props.navigation}/>
 			<ScrollView style = {styles.container}>
 			<Image 
-				source={require('../../../Images/kimjong.jpg')}
-				style={{height:250, width: undefined}}
+				source={require('../../../Images/fordham-rams-logo.png')}
+				style={{height:150, width: undefined}}
 			/>
 			<Panel title = "What is the Foundry?">
 				<Text style = {styles.messageT}>The Foundry is Fordham University’s business and idea incubator,
@@ -34,12 +34,12 @@ class HomeScreen extends Component {
 				<Text style = {styles.lastOne} fontWeight = "bold"> *Tell us about your ideas using our email address down below.</Text>
 				<Text style = {styles.lastTwo} fontWeight = "bold"> *Come visit us soon!</Text>
 			</Panel>
-			<Panel title = "Directors and Mentors">
+			<PanelToView title = "Directors and Mentors" wayto = {this.props.navigation}>
 				<Text style = {styles.dandmT}> To learn more about the directors and mentors here at the Fordham Foundry visit:</Text>
 				<View style = {styles.dandmP}>
 				<IonIcon name = "ios-home" size = {20}/>
 				</View>
-			</Panel>
+			</PanelToView>
 			<Panel title = "Business Partners">
 				<View style = {styles.businessP}>
 				<TouchableOpacity onPress = {() => Linking.openURL('https://group.bnpparibas/en/group/corporate-social-responsibility')}>
@@ -83,15 +83,9 @@ class HomeScreen extends Component {
 }
 
 const styles = StyleSheet.create ({
-	mainText1: {
-		marginTop: 20
-	},
-	mainText2: {
-		marginBottom: 10
-	},
 	container: {
 		flex : 1,
-	   	backgroundColor : '#f4f7f9'
+	   	//backgroundColor : '#f4f7f9'
 	},
 	addressText: {
 		marginBottom: 20,
@@ -102,18 +96,19 @@ const styles = StyleSheet.create ({
 		fontSize: 12
 	},
 	messageT: {
-		fontSize: 11
+		fontSize: 16
 	},
 	offer: {
 		fontSize: 11,
 		
 	},
 	lastOne: {
-		fontSize: 12,
-		fontWeight: "bold"
+		fontSize: 18,
+		fontWeight: "bold",
+		textAlign: 'center'
 	},
 	lastTwo: {
-		fontSize: 18,
+		fontSize: 20,
 		fontWeight: "bold",
 		textAlign: 'center'
 	},

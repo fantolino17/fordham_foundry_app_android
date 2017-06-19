@@ -43,7 +43,8 @@ const styles = StyleSheet.create ({
 		paddingRight: 10,
 		flexDirection: "row",
 		alignItems: 'center',
-		justifyContent: 'space-around'
+		justifyContent: 'space-around',
+		backgroundColor: 'lightgrey'
 	}
 })
 
