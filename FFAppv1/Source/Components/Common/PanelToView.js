@@ -29,7 +29,7 @@ class PanelToView extends Component{
 
 var styles = StyleSheet.create({
     container   : {
-        backgroundColor: '#fff',
+        backgroundColor: 'maroon',
         margin:10,
         justifyContent: 'center',
         borderWidth: 4,
@@ -41,9 +41,9 @@ var styles = StyleSheet.create({
     title       : {
         flex    : 1,
         padding : 10,
-        color   :'#2a2f43',
+        color   :'white',
         fontSize: 25,
-        fontFamily: "GillSans-Bold"
+        fontFamily: "GillSans"
     }
 });
 

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {View, StyleSheet, TouchableOpacity, Linking} from 'react-native';
 import IonIcon from 'react-native-vector-icons/Ionicons';
 import FontIcon from 'react-native-vector-icons/FontAwesome';
+import MatIcon from 'react-native-vector-icons/MaterialIcons';
 
 class MediaButtons extends Component {
 
@@ -20,14 +21,14 @@ class MediaButtons extends Component {
 			<TouchableOpacity onPress = {() => Linking.openURL('http://www.fordhamfoundry.org')}>
 				<IonIcon name = "md-globe" size = {30}/>
 			</TouchableOpacity>
+			<TouchableOpacity onPress = {() => Linking.openURL('mailto:fordhamfoundry@fordham.edu')}>
+				<MatIcon name = "mail-outline" size = {32}/>
+			</TouchableOpacity>
 			<TouchableOpacity onPress = {() => Linking.openURL('https://twitter.com/FordhamFoundry')}>
 				<IonIcon name = "logo-twitter" size = {30}/>
 			</TouchableOpacity>
 			<TouchableOpacity onPress = {() => Linking.openURL('https://www.instagram.com/fordhamfoundry')}>
 				<IonIcon name = "logo-instagram" size = {30}/>
-			</TouchableOpacity>
-			<TouchableOpacity onPress = {() => Linking.openURL('https://www.linkedin.com/company/fordham-foundry')}>
-				<IonIcon name = "logo-linkedin" size = {30}/>
 			</TouchableOpacity>
 			<TouchableOpacity onPress = {() => Linking.openURL('https://www.facebook.com/fordhamfoundry/')}>
 				<IonIcon name = "logo-facebook" size = {30}/>

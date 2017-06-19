@@ -71,7 +71,6 @@ class HomeScreen extends Component {
 				</View>
 			</Panel>
 			<View alignItems = 'center' justifyContent = 'center'>
-				<Text style = {styles.emailText}> Email: fordhamfoundry@fordham.edu </Text>
 				<Text style = {styles.addressText}> 557 East Fordham Road, 2nd Floor, Bronx, NY 10458 </Text>
 			</View>
 			</ScrollView>
@@ -88,8 +87,9 @@ const styles = StyleSheet.create ({
 	   	//backgroundColor : '#f4f7f9'
 	},
 	addressText: {
+		marginTop: 20,
 		marginBottom: 20,
-		fontSize: 12
+		fontSize: 14
 	},
 	emailText: {
 		marginTop: 20,

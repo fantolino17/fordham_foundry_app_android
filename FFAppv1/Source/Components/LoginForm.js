@@ -2,7 +2,7 @@ import React,{Component} from 'react'
 import {Text} from 'react-native'
 import {connect} from 'react-redux'
 import {Card, CardSection, Input, Button, Spinner} from './Common'
-import {emailChanged, passwordChanged, loginUser} from '../Actions'
+import {emailChanged, passwordChanged, loginUser, newUser} from '../Actions'
 
 class LoginForm extends Component{
 
@@ -20,13 +20,18 @@ class LoginForm extends Component{
     console.log(password)
   }
 
+  onNewHere() {
+    const {email, password} = this.props
+    this.props.newUser({email: email || '', password: password || ''})
+  }
+
   renderButton(){
     if(this.props.loading){
       return <Spinner size="large"/>
     }
     return (
       <Button onPress={this.onButtonPress.bind(this)}>
-        Login        
+         Login     
       </Button>
     )
   }
@@ -34,6 +39,11 @@ class LoginForm extends Component{
   render(){
     return(
       <Card>
+        <CardSection>
+          <Text style = {styles.headTextStyle}>
+            Sign In or Sign Up By Entering The Fields and Press Create!
+          </Text>
+        </CardSection>
         <CardSection>
           <Input
             secureText = {false}
@@ -57,18 +67,29 @@ class LoginForm extends Component{
         <CardSection>
           {this.renderButton()}
         </CardSection>
+      <CardSection>
+        <Button onPress = {this.onNewHere.bind(this)}>
+         <Text> Create </Text>
+        </Button>
+      </CardSection>
       </Card>
     )
   }
 }
 
-const styles = {
+const styles = ({
   errorTextStyle:{
     fontSize:20,
     alignSelf:'center',
     color:'red'
+  },
+  headTextStyle: {
+    fontSize: 15,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    color: 'maroon'
   }
-}
+});
 
 const mapStateToProps = state => {
   return {
@@ -79,4 +100,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps,{emailChanged, passwordChanged, loginUser})(LoginForm)
+export default connect(mapStateToProps,{emailChanged, passwordChanged, loginUser, newUser})(LoginForm)

@@ -103,7 +103,7 @@ var styles = StyleSheet.create({
         padding : 10,
         color   :'#2a2f43',
         fontSize: 25,
-        fontFamily: "GillSans-Bold"
+        fontFamily: "GillSans"
     },
     buttonImage : {
         width   : 30,

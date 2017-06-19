@@ -5,7 +5,11 @@ export const LOGIN_USER_SUCCESS = 'login_user_success'
 export const LOGIN_USER_FAIL = 'login_user_fail'
 export const LOGIN_USER = 'login_user'
 export const LOGOUT_USER_SUCCESS = 'logout_user_success'
+export const NO_USER = 'no_user'
+export const NEW_USER = 'new_user'
 export const LOGGEDIN_USER = 'loggedin_user'
+export const EXISTS_FAIL = 'exists_fail'
+
 
 export const JOB_UPDATE = 'job_update'
 export const JOB_CREATE = 'job_create'
