@@ -1,12 +1,11 @@
-import {JOB_UPDATE, JOB_CREATE, JOBS_FETCH_SUCCESS} from '../Actions/types'
+import {JOB_UPDATE, JOB_CREATE, JOBS_FETCH_SUCCESS, JOB_DELETE} from '../Actions/types'
 
 const INITIAL_STATE = {
   name: '',
   email: '',
   description: '',
   category: '',
-  user: null,
-  id: 1,
+  user: '',
   jb: {}
 }
 
@@ -15,10 +14,10 @@ export default (state = INITIAL_STATE, action) => {
     case JOB_UPDATE:
       return {...state, [action.payload.prop]: action.payload.value}
     case JOB_CREATE:
-      return {...state, name:'', email:'', description: '', category: '', user: null, id: state.id+1}
+      return {...state, name:'', email:'', description: '', category: '', user: '', jb: action.payload}
     case JOBS_FETCH_SUCCESS:
-      console.log("job fetch successful!!")
-      console.log(action.payload)
+      return {...state, jb: action.payload}
+    case JOB_DELETE:
       return {...state, jb: action.payload}
     default:
       return state
