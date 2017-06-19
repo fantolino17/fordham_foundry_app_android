@@ -22,8 +22,8 @@ class JobCreate extends Component {
   }
 
   onButtonPress(){
-    const {name, email, description, category, user, loggedIn, id} = this.props
-    
+    const {name, email, description, category, user, loggedIn} = this.props
+
     if(loggedIn){
       const {currentUser} = firebase.auth()
       this.props.jobCreate({
@@ -32,7 +32,6 @@ class JobCreate extends Component {
         description: description || 'No Description Provided', 
         category: category || 'Programmer',
         user: currentUser.uid || null,
-        id: id || 0
       })
     }else{
       this.setState({showModal: true})
@@ -84,9 +83,9 @@ const styles = {
 }
 
 const mapStateToProps = (state) => {
-  const {name, email, description, category, id} = state.jobForm
+  const {name, email, description, category} = state.jobForm
   const {user, loggedIn} = state.auth
-  return {name, email, description, category, user, loggedIn ,id} 
+  return {name, email, description, category, user, loggedIn} 
 }
 
 export default connect(mapStateToProps,{jobUpdate, jobCreate, fetchJobs})(JobCreate)

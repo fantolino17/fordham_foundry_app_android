@@ -1,28 +1,40 @@
 import React from 'react'
 import {Text, View} from 'react-native'
+import {connect} from 'react-redux';
 import {Card, CardSection, Button, Confirm} from '../../Components/Common'
 
+const renderButton = (canDelete, jobKey, jobDelete) => {    
+  if(canDelete)
+    return(
+      <CardSection>
+        <Button onPress={() => { jobDelete(jobKey) }}>
+          Delete
+        </Button>
+      </CardSection>
+    )
+}
 
-const JobDisplay = ({jobBoard, jobKey}) => {
-console.log(jobKey)
-console.log({jobKey})
-console.log({jobBoard})
+const JobDisplay = ({jobBoard, jobKey, canDelete, jobDelete}) => {
+
   return (
     <Card>
       <CardSection>
         <Text style={styles.textStyle}>Business Name:</Text>
-        <Text> {jobBoard[jobKey].name}</Text>
+        {jobBoard.hasOwnProperty(jobKey) ? <Text> {jobBoard[jobKey].name}</Text>:<Text></Text> }
       </CardSection>
 
       <CardSection>
         <Text style={styles.textStyle}>Field: </Text>
-        <Text> ({jobBoard[jobKey].category}) </Text>
+        {jobBoard.hasOwnProperty(jobKey) ? <Text> {jobBoard[jobKey].category}</Text>:<Text></Text> }
       </CardSection>
       
-      <CardSection>
+      <CardSection style={{flex:1}}>
         <Text style={styles.textStyle}>What we're looking for:</Text>
-        <Text> {jobBoard[jobKey].description} </Text>
+        {jobBoard.hasOwnProperty(jobKey) ? <Text> {jobBoard[jobKey].description}</Text>:<Text></Text> }
       </CardSection>
+
+      {canDelete ? renderButton(canDelete, jobKey, jobDelete):<Text></Text>}
+
     </Card>
   )
 }

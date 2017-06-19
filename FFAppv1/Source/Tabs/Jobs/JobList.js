@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Text, ListView, StyleSheet, View, ScrollView, TouchableOpacity} from 'react-native';
 import {connect} from 'react-redux';
-import {fetchJobs} from '../../Actions';
+import {fetchJobs, jobDelete} from '../../Actions';
 import JobForm from './JobForm';
 import firebase from 'firebase';
 
@@ -17,39 +17,23 @@ class JobList extends Component {
 	constructor(props) {
 		super(props);
 
-	// 	const getSectionData = (dataBlob, sectionId) => dataBlob[sectionId];
-	// 	const getRowData = (dataBlob, sectionId, rowId) => dataBlob[`${rowId}`];
-
-	// 	const ds = new ListView.DataSource({
-	// 	  rowHasChanged: (r1, r2) => r1 !== r2,
-	// 	  sectionHeaderHasChanged : (s1, s2) => s1 !== s2,
-	// 	  getSectionData,
-	// 	  getRowData,
-	// 	});
-
-	// 	const { dataBlob, sectionIds, rowIds } = this.formatData(this.props.jobs);
-	// 	this.state = {
-	// 	  dataSource: ds.cloneWithRowsAndSections(dataBlob, sectionIds, rowIds),
-	// 		showModal: false,			
-	// 	};
-
 		this.state = {
 			showModal: false,
 			showDesModal: false,
-			curKey: null
+			curKey: null,
+			canDelete: false
 		}
 	}
 
 	componentWillMount(){
 		console.log(this.props.jb)
 		this.props.fetchJobs()
-		console.log(this.props.jb)	
 	}
 
-	// compontDidMount(){
-	// 	console.log(this.props.jb)
-	// }
-
+	componentDidMount(){
+		this.props.fetchJobs()
+		console.log(this.props.jb)
+	}
 
 	renderRow(job) {
 		return <JobListItem job = {job}/>;
@@ -58,54 +42,6 @@ class JobList extends Component {
 	renderSectionHeader(job){
 		return <JobSection job = {job}/>;
 	}
-
-	// formatData(job) {
-  //   // We're sorting by alphabetically so we need the alphabet
-	// 	//const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
-	// 	const categories = ["Manager", "Marketing", "Programming", "Customer Service", "Product Testing"];
-
-	// 	// Need somewhere to store our data
-	// 	const dataBlob = {};
-	// 	const sectionIds = [];
-	// 	const rowIds = [];
-
-	// 	// Each section is going to represent a letter in the alphabet so we loop over the alphabet
-	// 	for (let sectionId = 0; sectionId < categories.length; sectionId++) {
-	// 	  // Get the character we're currently looking for
-	// 	  const currentCategory = categories[sectionId];
-
-	// 	  // Get users whose first name starts with the current letter
-	// 	  const jobsundercat = job.filter((joblisting) => joblisting.category === currentCategory);
-
-	// 	  // If there are any users who have a first name starting with the current letter then we'll
-	// 	  // add a new section otherwise we just skip over it
-	// 	  if (jobsundercat.length > 0) {
-	// 	  	sectionIds.push(sectionId);
-
-	// 	    // Store any data we would want to display in the section header. In our case we want to show
-	// 	    // the current character
-	// 	    dataBlob[sectionId] = { category: currentCategory };
-
-	// 	    // Setup a new array that we can store the row ids for this section
-	// 	    rowIds.push([]);
-
-	// 	    // Loop over the valid users for this section
-	// 	    for (let i = 0; i < jobsundercat.length; i++) {
-	// 	      // Create a unique row id for the data blob that the listview can use for reference
-	// 	      const rowId = `${sectionId}:${i}`;
-
-	// 	      // Push the row id to the row ids array. This is what listview will reference to pull
-	// 	      // data from our data blob
-	// 	      rowIds[rowIds.length - 1].push(rowId);
-
-	// 	      // Store the data we care about for this row
-	// 	      dataBlob[rowId] = jobsundercat[i];
-	// 	    }
-	// 	  }
-  //   	}
-
-  //   return { dataBlob, sectionIds, rowIds };
- 	// }
 
 	renderModal(){
 		 this.setState({showModal: true})
@@ -116,11 +52,19 @@ class JobList extends Component {
 		this.setState({showDesModal: false})
 	}
 	
-	renderDes(key){
-		console.log(key)
+	renderDes(key,del){
 		this.setState({curKey: key})
+		this.setState({canDelete: del})
 		this.setState({showDesModal: true})
 	}
+
+	deleteJob(key){
+		this.setState({showDesModal: false})
+		this.setState({curKey: null})
+		this.setState({canDelete: false})
+		this.props.jobDelete(key)
+	}
+
 
 	fetchJobBoard(){
 		jb = this.props.jb
@@ -128,19 +72,38 @@ class JobList extends Component {
 		rows=[]
 		for(var key in jb){
 			const temp = key
-			rows.push(
-			<TouchableOpacity onPress={ ()=>{this.renderDes(temp)} }>
-				<CardSection>
-						<Text style={styles.textStyle}>Business Name:</Text>
-						<Text> {jb[key].name}</Text>
-						<Text> ({jb[key].category})</Text>
-				</CardSection>
-			</TouchableOpacity>
-			)
+
+			currentUserId = firebase.auth().currentUser.uid
+			console.log(currentUserId)
+			console.log(jb[key].user)
+			if(this.props.user === null){
+				currentUserId = -1
+			}
+
+			if(currentUserId === jb[key].user){ //If current user created job, show delete button
+				rows.push(
+				<TouchableOpacity onPress={ ()=>{this.renderDes(temp,true)} }>
+					<CardSection>
+							<Text style={styles.userJobTextStyle}>Business Name:</Text>
+							<Text> {jb[key].name}</Text>
+							<Text> ({jb[key].category})</Text>
+					</CardSection>
+				</TouchableOpacity>
+				)
+			}else{ //If user did not create this job, dont show delete button (2nd param in renderDes)
+				rows.push(
+				<TouchableOpacity onPress={ ()=>{this.renderDes(temp,false)} }>
+					<CardSection>
+							<Text style={styles.textStyle}>Business Name:</Text>
+							<Text> {jb[key].name}</Text>
+							<Text> ({jb[key].category})</Text>
+					</CardSection>
+				</TouchableOpacity>
+				)
+			}
 		}
 		return <ScrollView>{rows}</ScrollView>
 	}
-
 
 
 	render() {
@@ -161,9 +124,8 @@ class JobList extends Component {
 					visible={this.state.showDesModal}
 					onReturn={this.onReturn.bind(this)}
 				>
-					<JobDisplay jobBoard={this.props.jb} jobKey={this.state.curKey} />
+					<JobDisplay jobBoard={this.props.jb} jobKey={this.state.curKey} canDelete={this.state.canDelete} jobDelete={this.props.jobDelete} />
 				</Confirm>
-
 
 				<CardSection>	
 					<Button onPress={this.renderModal.bind(this)}>
@@ -190,13 +152,17 @@ const styles = StyleSheet.create({
 	textStyle: {
 		fontSize: 16,
 		fontWeight: 'bold'
+	},
+	userJobTextStyle:{
+		fontSize: 16,
+		fontStyle: 'italic'
 	}
 });
 
 const mapStateToProps = state => {
 	const {email, jb} = state.jobForm
-	return {email, jb}
-	//return {jobs: state.jobs};
+	const {user} = state.auth
+	return {email, jb, user}
 };
 
-export default connect(mapStateToProps, {fetchJobs})(JobList);
+export default connect(mapStateToProps, {fetchJobs,jobDelete})(JobList);
