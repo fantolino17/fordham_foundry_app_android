@@ -39,8 +39,8 @@ class LoginScreen extends Component {
                 }}/>
               </View>
             
-              <ButtonCont onPress={(this.onLogOut.bind(this))}>
-               <Button> Log out </Button>
+              <ButtonCont>
+               <Button onPress={(this.onLogOut.bind(this))}> Log out </Button>
               </ButtonCont>
             
           </View>
