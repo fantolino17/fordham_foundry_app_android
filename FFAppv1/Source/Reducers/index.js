@@ -5,6 +5,7 @@ import JobReducer from './JobReducer';
 import JobFormReducer from './JobFormReducer'
 import AuthReducer from './AuthReducer'
 import EventsReducer from './EventsReducer'
+import UpdatesReducer from './UpdatesReducer'
 
 export default combineReducers({
 	information: InfoReducer,
@@ -13,5 +14,6 @@ export default combineReducers({
 	selectedJobId: SelectionReducer,
 	auth: AuthReducer,
 	jobForm: JobFormReducer,
-	events: EventsReducer
+	eventList: EventsReducer,
+	updateList: UpdatesReducer
 });

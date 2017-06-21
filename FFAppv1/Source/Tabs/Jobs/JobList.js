@@ -21,7 +21,7 @@ class JobList extends Component {
 			showModal: false,
 			showDesModal: false,
 			curKey: null,
-			canDelete: false
+			canDelete: false,
 		}
 	}
 
@@ -33,14 +33,6 @@ class JobList extends Component {
 	componentDidMount(){
 		this.props.fetchJobs()
 		console.log(this.props.jb)
-	}
-
-	renderRow(job) {
-		return <JobListItem job = {job}/>;
-	}
-
-	renderSectionHeader(job){
-		return <JobSection job = {job}/>;
 	}
 
 	renderModal(){
@@ -65,14 +57,16 @@ class JobList extends Component {
 		this.props.jobDelete(key)
 	}
 
-
 	fetchJobBoard(){
 		jb = this.props.jb
-		console.log(jb)
 		rows=[]
+		if(this.props.user === null){
+			currentUserId = -1
+		}else{
+			currentUserId = firebase.auth().currentUser.uid
+		}
 		for(var key in jb){
 			const temp = key
-
 			currentUserId = firebase.auth().currentUser.uid
 			console.log(currentUserId)
 			console.log(jb[key].user)
@@ -81,17 +75,18 @@ class JobList extends Component {
 			}
 			//changed from if to else if
 			if(currentUserId === jb[key].user){ //If current user created job, show delete button
-				rows.push(
+				rows.unshift(
 				<TouchableOpacity onPress={() => {this.renderDes(temp,true)}}>
 					<CSCol>
 							<Text style={styles.userJobTextStyle}>{jb[key].category}</Text>
 							<Text style={styles.nameStyle}>{jb[key].name}</Text>
 							<Text style = {styles.dateStyle}>Date</Text>
 					</CSCol>
+
 				</TouchableOpacity>
 				)
 			}else{ //If user did not create this job, dont show delete button (2nd param in renderDes)
-				rows.push(
+				rows.unshift(
 				<TouchableOpacity onPress={ ()=>{this.renderDes(temp,false)} }>
 					<CSCol>
 							<Text style={styles.catStyle}>{jb[key].category}</Text>
@@ -108,7 +103,7 @@ class JobList extends Component {
 
 	render() {
 		console.log(this.props.jb)
-		console.log(this.state.curKey)
+		console.log("RENDERING")
 		return(
 			<View>
 				<ButtonCont>

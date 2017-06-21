@@ -3,11 +3,14 @@ import {Text, View} from 'react-native';
 
 import ViewContainer from '../../Components/Common/ViewContainer';
 import NavBar from '../../Components/Header/NavBar';
-import ScrollableTabView from 'react-native-scrollable-tab-view';
+import ScrollableTabView, { DefaultTabBar } from 'react-native-scrollable-tab-view';
 import UpdateList from './UpdateList';
 import EventList from './EventList';
+import {Header} from '../../Components/Common'
+
 
 class Homescreen extends Component {
+
 	render () {
 		return (
 			<ViewContainer> 
@@ -16,6 +19,7 @@ class Homescreen extends Component {
 				<UpdateList tabLabel = "Updates"/>
 				<EventList tabLabel = "Events"/>
 			</ScrollableTabView>
+
 			</ViewContainer>
 			);
 	}

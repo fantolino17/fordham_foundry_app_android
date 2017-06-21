@@ -14,9 +14,10 @@ export default (state = INITIAL_STATE, action) => {
   switch(action.type) {
 
     case EVENTS_FETCH_SUCCESS:
+    console.log(action.payload)
       return {...state, events: action.payload}
 
     default:
-      return INITIAL_STATE
+      return {...state}
   }
 }

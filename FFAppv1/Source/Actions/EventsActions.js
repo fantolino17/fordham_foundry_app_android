@@ -15,7 +15,6 @@ export const readEvents = () => {
 }
 
 //Write events should be manually added to the database by admin
-//Format to add: date, time, location, title, description
 
 export const remindMe = ({date, time, note}) => {
   //wmcmahan api
