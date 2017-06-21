@@ -1,6 +1,8 @@
 import React from 'react'
 import {Text, View} from 'react-native'
 import {connect} from 'react-redux';
+import TimeAgo from 'react-native-timeago'
+
 import {Card, CardSection, Button, Confirm} from '../../Components/Common'
 
 const renderButton = (canDelete, jobKey, jobDelete) => {    
@@ -17,25 +19,24 @@ const renderButton = (canDelete, jobKey, jobDelete) => {
 const JobDisplay = ({jobBoard, jobKey, canDelete, jobDelete}) => {
 
   return (
-    <Card>
-      <CardSection>
+    <View>
+        <View>
         <Text style={styles.textStyle}>Business Name:</Text>
         {jobBoard.hasOwnProperty(jobKey) ? <Text> {jobBoard[jobKey].name}</Text>:<Text></Text> }
-      </CardSection>
-
-      <CardSection>
+      
         <Text style={styles.textStyle}>Field: </Text>
         {jobBoard.hasOwnProperty(jobKey) ? <Text> {jobBoard[jobKey].category}</Text>:<Text></Text> }
-      </CardSection>
       
-      <CardSection style={{flex:1}}>
         <Text style={styles.textStyle}>What we're looking for:</Text>
         {jobBoard.hasOwnProperty(jobKey) ? <Text> {jobBoard[jobKey].description}</Text>:<Text></Text> }
-      </CardSection>
+        
+        {jobBoard.hasOwnProperty(jobKey) ? <TimeAgo date={Date.parse(jobBoard[jobKey].date)} /> : <Text></Text>}
+
+        </View>
 
       {canDelete ? renderButton(canDelete, jobKey, jobDelete):<Text></Text>}
 
-    </Card>
+    </View>
   )
 }
 

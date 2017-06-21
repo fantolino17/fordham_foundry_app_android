@@ -35,20 +35,6 @@ class JobForm extends Component{
           />
         </CardSection>
 
-        <CardSection style={{flexDirection:'column', height: 300}}>
-          <Text style={styles.pickerTextStyle}>Category</Text>
-          <Picker
-            selectedValue={this.props.category}
-            onValueChange={cat => {this.props.jobUpdate({prop: 'category' , value: cat})}}
-            itemStyle={styles.itemStyle}
-            style={styles.pickerStyle}
-          >
-            <Picker.Item label="Programming" value="programming" />
-            <Picker.Item label="IT" value="it" />
-            <Picker.Item label="Marketing" value="marketing" />
-
-          </Picker>
-        </CardSection>
       </View>
     )
   }
