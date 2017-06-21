@@ -1,55 +1,60 @@
 import React, {Component} from 'react';
-import {Text, View, ListView, ScrollView} from 'react-native';
+import {Text, View, ListView, ScrollView, TouchableOpacity} from 'react-native';
 import { connect } from 'react-redux'
 import { readEvents } from '../../Actions'
+import {EventDisplay} from './EventDisplay'
+import { Confirm, Header } from '../../Components/Common'
+
 
 class EventList extends Component {
-	constructor() {
-		super();
-//		const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-		// this.state = {
-		//   dataSource: ds.cloneWithRows(['row 1', 'row 2']),
-		// };
+	constructor(props) {
+		super(props);
+		this.state = {
+			showModal:false,
+			curKey: ''
+		}
+
 	}
 
 	componentWillMount(){
 		this.props.readEvents()
 	}
 
+	renderEvents(){
+		events = this.props.events
 
-	renderEvents(events){
+		if(events === null){
+			return <Text>No Upcoming Events!</Text>
+		}
 		list = []
 		for(key in events){
-			list.push(<EventDisplay 
+			const temp = key
+			list.push(
+				<EventDisplay 
 				title={key}
 				location={events[key].location}
 				time={events[key].time}
-				date={events[key].date} />
+				date={events[key].date} 
+				/>
 			)
-
-		return list
 		}
+		return <View>{list}</View>
 	}
 
 	render () {
 		return (
-			<ScrollView>
-				{this.renderEvents(this.props.events)}			
-
-			{/*			
-			<ListView
-				removeClippedSubviews={false}
-				dataSource={this.state.dataSource}
-        		renderRow={(rowData) => <Text>{rowData}</Text>}
-			/>*/}
-
-			</ScrollView>
-			);
+			<View>
+				<Text> events page</Text>
+				<ScrollView>
+					{this.renderEvents()}
+				</ScrollView>
+			</View>
+			)
 	}
 }
 
-const mapStateToProps = (state) =>{
-	const { events } = state.events.events
+const mapStateToProps = state =>{
+	const { events } = state.eventList
 	return { events }
 }
 

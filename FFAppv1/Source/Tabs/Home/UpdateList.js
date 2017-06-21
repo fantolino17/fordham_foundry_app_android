@@ -1,24 +1,52 @@
 import React, {Component} from 'react';
 import {Text, View, ListView} from 'react-native';
+import { readUpdates } from '../../Actions'
+import { connect } from 'react-redux'
 
 class UpdateList extends Component {
-	constructor() {
-		super();
-		const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-		this.state = {
-		  dataSource: ds.cloneWithRows(['row 1', 'row 2']),
-		};
+	constructor(props) {
+		super(props);
+
 	}
 
+	componentWillMount(){
+		this.props.readUpdates()
+		console.log(this.props.updates)
+	}
+
+	renderUpdates(){
+		updates = this.props.updates
+
+		list = []
+		temp = ''
+		for(key in updates){
+			temp = key
+			console.log(updates[key].business)
+			console.log(updates[key].update)
+			console.log(updates[key].date)
+
+			//updates[key].business is the name i.e Pathos or Ventir
+			//updates[key].description is the description/announcment
+			//updates[key].date is the date it was posted
+			//style like mentor page, events too?
+
+
+		}
+	}
+	
 	render () {
+		console.log(this.props.updates)
 		return (
-			<ListView
-				removeClippedSubviews={false}
-				dataSource={this.state.dataSource}
-        		renderRow={(rowData) => <Text>{rowData}</Text>}
-			/>
-			);
+			<View>
+				{this.renderUpdates()}
+			</View>
+		)
 	}
 }
 
-export default UpdateList;
+const mapStateToProps = state => {
+	const { updates } = state.updateList
+	return { updates }
+}
+
+export default connect(mapStateToProps, { readUpdates })(UpdateList)
