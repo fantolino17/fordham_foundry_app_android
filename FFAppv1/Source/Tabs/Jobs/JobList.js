@@ -67,12 +67,6 @@ class JobList extends Component {
 		}
 		for(var key in jb){
 			const temp = key
-			currentUserId = firebase.auth().currentUser.uid
-			console.log(currentUserId)
-			console.log(jb[key].user)
-			if(this.props.user === null){
-				currentUserId = -1
-			}
 			//changed from if to else if
 			if(currentUserId === jb[key].user){ //If current user created job, show delete button
 				rows.unshift(
