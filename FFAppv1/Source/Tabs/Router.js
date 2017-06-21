@@ -6,18 +6,19 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import Homescreen from '../Tabs/Home/Homescreen';
 import Jobscreen from '../Tabs/Jobs/Jobscreen';
 import Bubblescreen from '../Tabs/Bubble/Bubblescreen';
+import FFBusscreen from '../Tabs/Bubble/FFBusscreen';
 import DandMscreen from '../Tabs/Bubble/DandMscreen';
 import Chatscreen from '../Tabs/Chat/Chatscreen';
-import LoginScreen from '../Tabs/Login/LoginScreen'
+import LoginScreen from '../Tabs/Login/LoginScreen';
 
-export const DandMStack = StackNavigator ({
+export const FFBusStack = StackNavigator ({
 	Bubble: {
 		screen: Bubblescreen,
 		navigationOptions: {
 			headerTitle: <Image source = {require('../../Images/foundry-logo-top-bar.png')} 
 				style = {{height:40, width: 150, marginBottom: 20}}/>,
 			headerStyle: {
-       			backgroundColor: 'mistyrose',
+       			backgroundColor: '#f7f7f8',
        			elevation: null
        		},
        		headerTitleStyle: {
@@ -31,12 +32,12 @@ export const DandMStack = StackNavigator ({
   			},
 	},
 },
-	DandM: {
-		screen: DandMscreen,
+	FFBus: {
+		screen: FFBusscreen,
 		navigationOptions: {
-			headerTitle: 'Directors and Mentors',
+			headerTitle: 'Fordham Businesses',
 			headerStyle: {
-       			backgroundColor: 'mistyrose',
+       			backgroundColor: '#f7f7f8',
        			elevation: null
        		},
        		headerTitleStyle: {
@@ -73,20 +74,20 @@ export const Tabs = TabNavigator ({
 	},
 	
 	Bubble: {
-		screen: DandMStack,
+		screen: FFBusStack,
 		navigationOptions: {
 			/*tabBarIcon: <Image source = {require('../../Images/bubbleicon.png')}
 						style = {{height: 50, width: 40}}/>*/
-			tabBarIcon: ({focused}) => <Image source = {focused ? require('../../Images/bubbleiconclick.png'):require('../../Images/bubbleicon.png')} style = {{height: 50, width: 40}}/>
+			tabBarIcon: ({focused}) => <Image source = {focused ? require('../../Images/bubbleclickedon.png'):require('../../Images/bubbleiconbetter.png')} style = {{height: 45, width: 35}}/>
 			//tabBarIcon: ({tintColor, focused}) => <Icon name  = {focused ? "ios-information-circle": "ios-information-circle-outline"} size = {38} color = {focused? "darkred":"black"}/>
 		}
 	},
 
-	Chat: {
-		screen: Chatscreen,
+	DandMScreen: {
+		screen: DandMscreen,
 		navigationOptions: {
-			tabBarLabel: 'Chat',
-			tabBarIcon: ({tintColor, focused}) => <Icon name  = {focused ? "ios-chatbubbles": "ios-chatbubbles-outline"} size = {36} color = {focused? "darkred":"black"}/>
+			tabBarLabel: 'DandM',
+			tabBarIcon: ({tintColor, focused}) => <Icon name  = {focused ? "ios-people": "ios-people-outline"} size = {40} color = {focused? "darkred":"black"}/>
 		}
 	},
 

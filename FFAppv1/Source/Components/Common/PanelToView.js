@@ -13,7 +13,7 @@ class PanelToView extends Component{
     render(){
         //Step 5
         return ( 
-        <TouchableHighlight onPress = {() => this.props.wayto.navigate('DandM')}
+        <TouchableHighlight onPress = {() => this.props.wayto.navigate('FFBus')}
                         style={styles.button} 
                         underlayColor="#f1f1f1">
             <View style={[styles.container]}>
@@ -32,7 +32,7 @@ var styles = StyleSheet.create({
         backgroundColor: 'maroon',
         margin:10,
         justifyContent: 'center',
-        borderWidth: 4,
+        borderWidth: 2,
         borderColor: 'black'
     },
     titleContainer : {

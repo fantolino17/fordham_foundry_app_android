@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {Text} from 'react-native';
+import {Text, TouchableWithoutFeedback} from 'react-native';
 import firebase from 'firebase';
 import {jobUpdate, jobCreate, fetchJobs} from '../../Actions';
 import {Card, CardSection, Button, Confirm} from '../../Components/Common';
@@ -46,15 +46,11 @@ class JobCreate extends Component {
   render(){
     return (
       <Card>
-        
         <Confirm
           visible={this.state.showModal}
           onReturn={this.onReturn.bind(this)}
-			  >
-          <Text style={styles.modalTextStyle}>
-            Oops! Ya need to log in to post!
-          </Text>
-				</Confirm>
+        />
+        
 
         <JobForm {...this.props}/>
         <CardSection>
@@ -62,13 +58,6 @@ class JobCreate extends Component {
             Create
           </Button>
         </CardSection>
-
-        <CardSection>
-          <Button onPress={this.display.bind(this)}>
-            Console log
-          </Button>
-        </CardSection>
-      
       </Card>
     )
   }

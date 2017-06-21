@@ -27,7 +27,7 @@ const styles = {
     alignSelf: 'stretch',
     backgroundColor: 'maroon',
     borderRadius: 5,
-    borderWidth: 4,
+    borderWidth: 2,
     borderColor: 'black',
     marginLeft: 5,
     marginRight: 5

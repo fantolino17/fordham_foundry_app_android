@@ -11,14 +11,11 @@ class Homescreen extends Component {
 	render () {
 		return (
 			<ViewContainer> 
-			<NavBar wayto = {this.props.navigation}/>
-			{/*<ScrollableTabView tabBarTextStyle = {{fontSize: 12}}>*/}
-				<View>
-				{/*<UpdateList tabLabel = "Updates"/>*/}
-				{/*<EventList tabLabel = "Events"/>*/}
-				<EventList/>
-				</View>
-			{/*</ScrollableTabView>*/}
+			<NavBar/>
+			<ScrollableTabView tabBarTextStyle = {{fontSize: 12}}>
+				<UpdateList tabLabel = "Updates"/>
+				<EventList tabLabel = "Events"/>
+			</ScrollableTabView>
 			</ViewContainer>
 			);
 	}
