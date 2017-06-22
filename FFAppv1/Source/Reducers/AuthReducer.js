@@ -16,7 +16,7 @@ export default (state = INITIAL_STATE, action) => {
     case PASSWORD_CHANGED:
       return {...state, password: action.payload}
     case LOGIN_USER:
-      return {...state, ...INITIAL_STATE, loading:true}
+      return {...state, ...INITIAL_STATE, loading:true, error: ''}
     case LOGIN_USER_SUCCESS:
       return {...state, ...INITIAL_STATE, user: action.payload, loggedIn: true}
     case LOGIN_USER_FAIL:
@@ -26,7 +26,7 @@ export default (state = INITIAL_STATE, action) => {
     case LOGGEDIN_USER:
       return {...state, ...INITIAL_STATE, user: action.payload, loggedIn: true}
     case NO_USER:
-      return {...state, error: "User Does Not Exist", loading: false}
+      return {...state, user: null, error: "User Does Not Exist", loading: false}
     case NEW_USER:
       return {...state, ...INITIAL_STATE, loading: true}
     case EXISTS_FAIL:
