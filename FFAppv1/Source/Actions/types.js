@@ -16,6 +16,7 @@ export const JOB_CREATE = 'job_create'
 export const JOBS_FETCH_SUCCESS = 'jobs_fetch_success'
 export const JOB_DELETE = 'job_delete'
 
+
 export const SELECT_INFO = 'select_info'
 export const SELECT_JOB = 'select_job'
 

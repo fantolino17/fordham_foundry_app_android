@@ -17,8 +17,7 @@ export const jobCreate = ({name, contact, description, title, user}) => {
   //id = firebase.auth().UID, remove from param list
   ref = firebase.database().ref(`/jobBoard`)
   let date = new Date()
-  // date.getDay()
-  console.log(date)
+
   return (dispatch) => {
     ref.push({name,contact,description,user,title,date})
       .then( () => {
@@ -58,8 +57,12 @@ export const fetchJobs = () => {
 
   return (dispatch) => {
     ref.on('value', snapshot => {
-        dispatch({type: JOBS_FETCH_SUCCESS, payload: snapshot.val()})
+        dispatch({
+          type: JOBS_FETCH_SUCCESS,
+          payload: snapshot.val()
+        })
     })
   }
 }
+
 
