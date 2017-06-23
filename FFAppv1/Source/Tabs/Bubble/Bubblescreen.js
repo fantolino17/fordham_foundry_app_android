@@ -10,17 +10,42 @@ import MediaButtons from '../../Components/Common/MediaButtons';
 import call from 'react-native-phone-call';
 import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import IonIcon from 'react-native-vector-icons/Ionicons'; 
+import ImageSlider from 'react-native-image-slider';
 
 
 class HomeScreen extends Component {
+	constructor (props){
+		super(props);
+
+		this.state = { 
+			position: 0,
+			interval: null 
+		};
+	}
+
+	componentWillMount(){
+		this.setState({interval: setInterval(() => {
+			this.setState({position: this.state.position === 2 ? 0 : this.state.position +1});
+		}, 6000)});
+	}
+
+	componentWillUnmount(){
+		clearInterval(this.state.interval)
+	}
+
+
 	render () {
 		return (
 			<ViewContainer>
 			<ScrollView style = {styles.container}>
-			<Image 
-				source={require('../../../Images/fordham-rams-logo.png')}
-				style={{height:150, width: undefined}}
-			/>
+			<ImageSlider 
+				images = {[
+					require('../../../Images/fordham-rams-logo.png'),
+					require('../../../Images/LIPhotoCMeyer.jpg'),
+					require('../../../Images/fordham-rams-logo.png')
+					]}
+					position = {this.state.position}
+					onPositionChanged = { position => this.setState({position})}/>
 			<Panel title = "What is the Foundry?">
 				<Text style = {styles.messageT}>The Foundry is Fordham University’s business and idea incubator,
 				open to students, alumni, community, and the entrepreneurial organisations
@@ -30,11 +55,10 @@ class HomeScreen extends Component {
 			<Panel title = "You have a great business idea. Now what?">
 				<Text style = {styles.messageT}> Let us help you take your idea to the next level! </Text>
 				<Text style = {styles.offer}> We offer: </Text>
-				<Text style = {styles.messageT}>{'	-Mentorship and consulting\n	-Speakers, workshops, and other events\n	-Legal assistance via the FELC\n	(Fordham Entrepreneurial Law Clinic)\n	-And more!'} </Text>
+				<Text style = {styles.messageT}>{'	-Mentorship and consulting\n	-Speakers, workshops, and other events\n	-Legal assistance via the\n	(Fordham Entrepreneurial Law Clinic)\n	-And more!'} </Text>
 				<Text style = {styles.lastOne} fontWeight = "bold"> *Tell us about your ideas using our email address down below.</Text>
-				<Text style = {styles.lastTwo} fontWeight = "bold"> *Come visit us soon!</Text>
 			</Panel>
-			<PanelToView title = "Directors and Mentors" wayto = {this.props.navigation}>
+			<PanelToView title = "Fordham Businesses" wayto = {this.props.navigation}>
 				<Text style = {styles.dandmT}> To learn more about the directors and mentors here at the Fordham Foundry visit:</Text>
 				<View style = {styles.dandmP}>
 				<IonIcon name = "ios-home" size = {20}/>

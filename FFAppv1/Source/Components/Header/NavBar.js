@@ -17,7 +17,7 @@ class NavBar extends Component {
 const styles = StyleSheet.create ({
 	navBarBackground: {
 		height: 64,
-		backgroundColor: "mistyrose",
+		backgroundColor: "#f7f7f8",
 		alignItems: 'center',
 		justifyContent: 'center',
 		flexDirection: 'row'

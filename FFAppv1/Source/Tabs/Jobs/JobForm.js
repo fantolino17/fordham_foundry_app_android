@@ -43,6 +43,7 @@ class JobForm extends Component{
             onChangeText={text => this.props.jobUpdate({prop: 'contact', value: text})}
           />
         </CardSection>
+
       </View>
     )
   }

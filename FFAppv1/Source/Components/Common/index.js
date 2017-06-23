@@ -5,4 +5,6 @@ export * from './Header'
 export * from './Input'
 export * from './Spinner'
 export * from './Confirm'
+export * from './ButtonCont'
+export * from './CSCol'
 //Can import folder, will import this file bc named index

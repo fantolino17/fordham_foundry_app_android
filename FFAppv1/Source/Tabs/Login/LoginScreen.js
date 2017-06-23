@@ -31,23 +31,24 @@ class LoginScreen extends Component {
       case true:
         return(
           <View>
-          <View alignItems = "center">
-              <Image source = {require('../../../Images/logo.png')} 
-                style={{
-                width: 260,
-                height: 260,
-                }}/>
-              </View>
-              <View>
-                <Text style = {styles.headTextStyle}>
-                  {firebase.auth().currentUser.email}
-                  </Text>
-                  </View>
-            
-              <ButtonCont>
-                <Button onPress={(this.onLogOut.bind(this))}> Log out </Button>
-              </ButtonCont>
-            
+            <View alignItems = "center">
+                <Image source = {require('../../../Images/logo.png')} 
+                  style={{
+                  width: 260,
+                  height: 260,
+                  }}/>
+            </View>
+
+            <View>
+              <Text style = {styles.headTextStyle}>
+                {firebase.auth().currentUser.email}
+              </Text>
+             </View>
+
+            <ButtonCont>
+              <Button onPress={(this.onLogOut.bind(this))}> Log out </Button>
+            </ButtonCont>
+
           </View>
         )
       default:

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, ScrollView } from 'react-native';
 
 const Card = (props) => {
   return (
@@ -11,7 +11,7 @@ const Card = (props) => {
 
 const styles = {
   containerStyle: {
-    borderWidth: 1,
+    borderWidth: 2,
     borderRadius: 2,
     borderColor: 'black',
     borderBottomWidth: 0,
