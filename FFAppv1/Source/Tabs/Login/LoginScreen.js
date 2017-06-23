@@ -34,13 +34,13 @@ class LoginScreen extends Component {
           <View alignItems = "center">
               <Image source = {require('../../../Images/logo.png')} 
                 style={{
-                width: 260,
-                height: 260,
+                width: 200,
+                height: 200,
                 }}/>
               </View>
             
-              <ButtonCont onPress={(this.onLogOut.bind(this))}>
-               <Button> Log out </Button>
+              <ButtonCont>
+               <Button onPress={(this.onLogOut.bind(this))}> Log out </Button>
               </ButtonCont>
             
           </View>

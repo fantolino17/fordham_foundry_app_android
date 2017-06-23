@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
-import {ScrollView, Text, View, StyleSheet, Image, Animated, Button, TouchableOpacity, Linking} from 'react-native';
+import {ScrollView, Text, View, StyleSheet, Image, Button, TouchableOpacity, Linking} from 'react-native';
 
-import InfoList from './InfoList';
-import NavBar from '../../Components/Header/NavBar';
 import ViewContainer from '../../Components/Common/ViewContainer';
 import Panel from '../../Components/Common/Panel';
 import PanelToView from '../../Components/Common/PanelToView';
@@ -25,7 +23,7 @@ class HomeScreen extends Component {
 
 	componentWillMount(){
 		this.setState({interval: setInterval(() => {
-			this.setState({position: this.state.position === 2 ? 0 : this.state.position +1});
+			this.setState({position: this.state.position === 3 ? 0 : this.state.position +1});
 		}, 6000)});
 	}
 
@@ -40,9 +38,10 @@ class HomeScreen extends Component {
 			<ScrollView style = {styles.container}>
 			<ImageSlider 
 				images = {[
-					require('../../../Images/fordham-rams-logo.png'),
-					require('../../../Images/LIPhotoCMeyer.jpg'),
-					require('../../../Images/fordham-rams-logo.png')
+					require('../../../Images/slide2.png'),
+					require('../../../Images/slide1.png'),
+					require('../../../Images/slide3.png'),
+					require('../../../Images/slide4.png')
 					]}
 					position = {this.state.position}
 					onPositionChanged = { position => this.setState({position})}/>
@@ -54,16 +53,11 @@ class HomeScreen extends Component {
 			</Panel>
 			<Panel title = "You have a great business idea. Now what?">
 				<Text style = {styles.messageT}> Let us help you take your idea to the next level! </Text>
-				<Text style = {styles.offer}> We offer: </Text>
-				<Text style = {styles.messageT}>{'	-Mentorship and consulting\n	-Speakers, workshops, and other events\n	-Legal assistance via the\n	(Fordham Entrepreneurial Law Clinic)\n	-And more!'} </Text>
-				<Text style = {styles.lastOne} fontWeight = "bold"> *Tell us about your ideas using our email address down below.</Text>
+				<Text style = {styles.messageT}> We offer: </Text>
+				<Text style = {styles.messageT}>{'	\u2022Mentorship and consulting\n	\u2022Speakers, workshops, and other events\n	\u2022Legal assistance via the\n	(Fordham Entrepreneurial Law Clinic)\n	\u2022And more!'} </Text>
+				<Text style = {styles.lastOne} fontWeight = "bold"> Tell us about your ideas using our email address down below.</Text>
 			</Panel>
-			<PanelToView title = "Fordham Businesses" wayto = {this.props.navigation}>
-				<Text style = {styles.dandmT}> To learn more about the directors and mentors here at the Fordham Foundry visit:</Text>
-				<View style = {styles.dandmP}>
-				<IonIcon name = "ios-home" size = {20}/>
-				</View>
-			</PanelToView>
+			<PanelToView title = "Foundry Businesses" wayto = {this.props.navigation}/>
 			<Panel title = "Business Partners">
 				<View style = {styles.businessP}>
 				<TouchableOpacity onPress = {() => Linking.openURL('https://group.bnpparibas/en/group/corporate-social-responsibility')}>
@@ -113,20 +107,16 @@ const styles = StyleSheet.create ({
 	addressText: {
 		marginTop: 20,
 		marginBottom: 20,
-		fontSize: 14
-	},
-	emailText: {
-		marginTop: 20,
-		fontSize: 12
+		fontSize: 14,
+		fontFamily: "GillSans-Light"
+
 	},
 	messageT: {
-		fontSize: 16
-	},
-	offer: {
-		fontSize: 11,
-		
+		fontSize: 18,
+		fontFamily: "GillSans-Light"
 	},
 	lastOne: {
+		paddingTop: 10,
 		fontSize: 18,
 		fontWeight: "bold",
 		textAlign: 'center'

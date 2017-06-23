@@ -1,5 +1,5 @@
 import React,{Component} from 'react'
-import {Text, View, Image} from 'react-native'
+import {Text, View, Image, KeyboardAvoidingView} from 'react-native'
 import {connect} from 'react-redux'
 import {Card, CardSection, Input, Button, ButtonCont, Spinner} from './Common'
 import {emailChanged, passwordChanged, loginUser, newUser} from '../Actions'
@@ -38,13 +38,14 @@ class LoginForm extends Component{
 
   render(){
     return(
+    <KeyboardAvoidingView>
     <View>
     <View alignItems = "center">
           <Image
             source = {require('../../Images/logo.png')}
             style={{
-              width: 260,
-              height: 260,
+              width: 200,
+              height: 200,
 
          }}/>
     </View>
@@ -77,13 +78,14 @@ class LoginForm extends Component{
         <ButtonCont>
           {this.renderButton()}
         </ButtonCont>
-      <ButtonCont>
+        <ButtonCont>
         <Button onPress = {this.onNewHere.bind(this)}>
          Signup 
         </Button>
       </ButtonCont>
       
     </View>
+    </KeyboardAvoidingView>
     )
   }
 }
@@ -96,7 +98,7 @@ const styles = ({
   },
   headTextStyle: {
     padding: 10,
-    fontSize: 25,
+    fontSize: 20,
     fontWeight: 'bold',
     textAlign: 'center',
     color: 'white'

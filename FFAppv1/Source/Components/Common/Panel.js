@@ -70,7 +70,7 @@ class Panel extends Component{
         //Step 5
         return ( 
         <TouchableHighlight 
-                        style={styles.button} 
+                         
                         onPress={this.toggle.bind(this)}
                         underlayColor="#f1f1f1">
             <View style={[styles.container,{height: this.state.animation}]}>
@@ -91,7 +91,7 @@ class Panel extends Component{
 
 var styles = StyleSheet.create({
     container   : {
-        backgroundColor: '#fff',
+        backgroundColor: 'white',
         margin:10,
         overflow:'hidden'
     },
@@ -111,7 +111,8 @@ var styles = StyleSheet.create({
     },
     body        : {
         padding     : 10,
-        paddingTop  : 0
+        paddingTop  : 0,
+        
     }
 });
 
