@@ -24,14 +24,20 @@ class UpdateList extends Component {
 			console.log(updates[key].business)
 			console.log(updates[key].update)
 			console.log(updates[key].date)
+			list.unshift(
+				<View>
+					<Text>{updates[key].business}</Text>
+					<Text>{updates[key].update}</Text>
+					<Text>{updates[key].date}</Text>
+				</View>
+			)
 
 			//updates[key].business is the name i.e Pathos or Ventir
 			//updates[key].description is the description/announcment
 			//updates[key].date is the date it was posted
 			//style like mentor page, events too?
-
-
 		}
+		return list
 	}
 	
 	render () {

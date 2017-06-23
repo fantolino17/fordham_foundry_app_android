@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Text, View} from 'react-native';
+import {Text, View, ScrollView} from 'react-native';
 
 import ViewContainer from '../../Components/Common/ViewContainer';
 import NavBar from '../../Components/Header/NavBar';
@@ -14,15 +14,14 @@ class Homescreen extends Component {
 	render () {
 		return (
 			<ViewContainer> 
-			<NavBar wayto = {this.props.navigation}/>
-			{/*<ScrollableTabView*/}
-				{/*tabBarTextStyle = {{fontSize: 12}} renderTabBar={() => <DefaultTabBar/>} >*/}
-				
+			<NavBar/>
+			{/*<ScrollableTabView tabBarTextStyle = {{fontSize: 12}}>*/}
 				
 				<UpdateList tabLabel = "Updates"/>
-				<EventList tabLabel = "Events" />
+				<EventList tabLabel = "Events"/>
 				
 			{/*</ScrollableTabView>*/}
+
 			</ViewContainer>
 			);
 	}
