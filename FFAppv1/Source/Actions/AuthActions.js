@@ -30,7 +30,15 @@ export const newUser = ({email, password}) => {
   return (dispatch) => {
     dispatch({type: NEW_USER})
     firebase.auth().createUserWithEmailAndPassword(email, password)
-      .then (user => loginUserSuccess(dispatch, user, loggedIn))
+      .then (() => {alert ('Your Account Was Created!');
+      this.props({
+        email,
+        password,
+        loading
+
+      })
+
+      })
       .catch (() => existsFail(dispatch))
   }
 }

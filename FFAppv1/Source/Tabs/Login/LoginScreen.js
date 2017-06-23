@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import LoginForm from '../../Components/LoginForm';
-import {View, Image} from 'react-native';
+import {Text, View, Image} from 'react-native';
 import {logoutUser, loggedInUser} from '../../Actions';
 import {connect} from 'react-redux';
 import firebase from 'firebase';
@@ -31,18 +31,24 @@ class LoginScreen extends Component {
       case true:
         return(
           <View>
-          <View alignItems = "center">
-              <Image source = {require('../../../Images/logo.png')} 
-                style={{
-                width: 260,
-                height: 260,
-                }}/>
-              </View>
-            
-              <ButtonCont>
-               <Button onPress={(this.onLogOut.bind(this))}> Log out </Button>
-              </ButtonCont>
-            
+            <View alignItems = "center">
+                <Image source = {require('../../../Images/logo.png')} 
+                  style={{
+                  width: 260,
+                  height: 260,
+                  }}/>
+            </View>
+
+            <View>
+              <Text style = {styles.headTextStyle}>
+                {firebase.auth().currentUser.email}
+              </Text>
+             </View>
+
+            <ButtonCont>
+              <Button onPress={(this.onLogOut.bind(this))}> Log out </Button>
+            </ButtonCont>
+
           </View>
         )
       default:
@@ -59,6 +65,15 @@ class LoginScreen extends Component {
     )
   }
 }
+
+const styles = ({
+  headTextStyle: {
+    padding: 10,
+    fontSize:  10,
+    textAlign: 'center',
+    color: 'black'
+  }
+});
 
 const mapStateToProps = state => {
   return {

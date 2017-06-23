@@ -10,30 +10,40 @@ class JobForm extends Component{
       <View>
          <CardSection>
           <Input 
-            label="Business Name"
-            placeholder="your business name"
-            value={this.props.name}
-            onChangeText={text => this.props.jobUpdate({prop: 'name', value: text})}
+            label="Job Title"
+            placeholder="title/position"
+            value={this.props.title}
+            onChangeText={text => this.props.jobUpdate({prop: 'title', value: text})}
           />
         </CardSection>
 
         <CardSection>
           <Input 
-            label="Contact email:"
+            label="Business/Name:"
             placeholder="user@user.com"
-            value={this.props.email}
-            onChangeText={text => this.props.jobUpdate({prop: 'email', value: text})}
+            value={this.props.name}
+            onChangeText={text => this.props.jobUpdate({prop: 'name', value: text})}
           />
         </CardSection>
         
         <CardSection>
           <Input 
-            label="Job Description:"
+            label="Description:"
             placeholder="Lookin' for..."
             value={this.props.description}
             onChangeText={text => this.props.jobUpdate({prop: 'description', value: text})}
           />
         </CardSection>
+
+        <CardSection>
+          <Input 
+            label="Contact:"
+            placeholder="user@user.com"
+            value={this.props.contact}
+            onChangeText={text => this.props.jobUpdate({prop: 'contact', value: text})}
+          />
+        </CardSection>
+
       </View>
     )
   }
@@ -59,8 +69,8 @@ const styles = {
 }
  
 mapStateToProps = (state) => {
-  const {name,email,description,category} = state.jobForm
-  return {name,email,description,category}
+  const {title,contact,description,category} = state.jobForm
+  return {title,contact,description,category}
 }
 
 export default connect(mapStateToProps, {jobUpdate})(JobForm)

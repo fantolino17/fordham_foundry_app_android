@@ -26,13 +26,7 @@ class JobList extends Component {
 	}
 
 	componentWillMount(){
-		console.log(this.props.jb)
-		this.props.fetchJobs()
-	}
-
-	componentDidMount(){
-		this.props.fetchJobs()
-		console.log(this.props.jb)
+		this.props.fetchJobs()		
 	}
 
 	renderModal(){
@@ -58,6 +52,7 @@ class JobList extends Component {
 	}
 
 	fetchJobBoard(){
+
 		jb = this.props.jb
 		rows=[]
 		if(this.props.user === null){
@@ -96,8 +91,7 @@ class JobList extends Component {
 
 
 	render() {
-		console.log(this.props.jb)
-		console.log("RENDERING")
+
 		return(
 			<View>
 				<ButtonCont>
@@ -109,8 +103,8 @@ class JobList extends Component {
 			{this.fetchJobBoard()}
 			
 			<Confirm
-          		visible={this.state.showModal}
-          		onReturn={this.onReturn.bind(this)}
+        visible={this.state.showModal}
+        onReturn={this.onReturn.bind(this)}
 			>
 			
 				<JobCreate style={{flex:1}}/>
