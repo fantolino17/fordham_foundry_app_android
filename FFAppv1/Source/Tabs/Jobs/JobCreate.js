@@ -17,12 +17,12 @@ class JobCreate extends Component {
   renderModal(){
     this.setState({showModal: true})
   }
-  onReturn(){
+  /*onReturn(){
     this.setState({showModal: false})
-  }
+  }*/
 
   onButtonPress(){
-    const {name, contact, description, title, user, loggedIn} = this.props
+    const {name, contact, description, title, link, user, loggedIn} = this.props
 
     if(loggedIn){
       const {currentUser} = firebase.auth()
@@ -30,7 +30,8 @@ class JobCreate extends Component {
         name: name || 'No Name Provided', 
         contact: contact || 'No Contact Provided', 
         description: description || 'No Description Provided', 
-        title: title || 'No Worker Provided',
+        title: title || 'No Title Provided',
+        link: link || '',
         user: currentUser.uid || null,
       })
     }else{
@@ -46,12 +47,6 @@ class JobCreate extends Component {
   render(){
     return (
       <Card>
-        <Confirm
-          visible={this.state.showModal}
-          onReturn={this.onReturn.bind(this)}
-        />
-        
-
         <JobForm {...this.props}/>
         <CardSection>
           <Button onPress={this.onButtonPress.bind(this)}>
@@ -72,9 +67,9 @@ const styles = {
 }
 
 const mapStateToProps = (state) => {
-  const {name, contact, description, title} = state.jobForm
+  const {name, contact, description, title, link} = state.jobForm
   const {user, loggedIn} = state.auth
-  return {name, contact, description, title, user, loggedIn} 
+  return {name, contact, description, title, link, user, loggedIn} 
 }
 
 export default connect(mapStateToProps,{jobUpdate, jobCreate, fetchJobs})(JobCreate)

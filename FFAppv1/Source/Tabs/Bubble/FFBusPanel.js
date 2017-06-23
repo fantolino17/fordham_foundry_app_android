@@ -5,7 +5,7 @@ import SimpleIcon from 'react-native-vector-icons/SimpleLineIcons';
 var arrofImages = [
     require('../../../Images/brevite.jpg'),
     require('../../../Images/KindMind.jpg'),
-    require('../../../Images/pathos.png'),
+    require('../../../Images/pathoslogo.png'),
     require('../../../Images/radiate.jpg'),
     require('../../../Images/redplanet.jpg'),
     require('../../../Images/ventir.png')
@@ -142,8 +142,8 @@ var styles = StyleSheet.create({
         paddingTop  : 0
     },
     photo: {
-        height: 70,
-        width: 80,
+        height: 80,
+        width: 90,
         borderRadius: 20,
     },
     iconCont: {

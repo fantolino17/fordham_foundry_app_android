@@ -16,10 +16,10 @@ class Jobscreen extends Component {
 			<ViewContainer>
 			<NavBar wayto = {this.props.navigation}/>
 			{/*<ScrollableTabView tabBarTextStyle = {{fontSize: 12}}>*/}
-			<View>
-				<JobList tabLabel = "Opportunities"/>
+			
+				<JobList/>
 				{/*<LofBusinesses tabLabel = "Businesses @ Fordham"/>*/}
-			</View>
+			
 			{/*</ScrollableTabView>*/}
 			</ViewContainer>
 			
