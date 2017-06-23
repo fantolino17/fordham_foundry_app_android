@@ -17,6 +17,7 @@ export const readEvents = () => {
 //Write events should be manually added to the database by admin
 
 export const remindMe = ({date, time, note}) => {
+  
   //wmcmahan api
   //https://github.com/wmcmahan/React-Native-Calendar-Reminders
 }
