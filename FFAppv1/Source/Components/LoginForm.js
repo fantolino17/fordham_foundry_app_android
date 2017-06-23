@@ -1,7 +1,7 @@
 import React,{Component} from 'react'
-import {Text} from 'react-native'
+import {Text, View, Image} from 'react-native'
 import {connect} from 'react-redux'
-import {Card, CardSection, Input, Button, Spinner} from './Common'
+import {Card, CardSection, Input, Button, ButtonCont, Spinner} from './Common'
 import {emailChanged, passwordChanged, loginUser, newUser} from '../Actions'
 
 class LoginForm extends Component{
@@ -38,12 +38,22 @@ class LoginForm extends Component{
 
   render(){
     return(
-      <Card>
-        <CardSection>
-          <Text style = {styles.headTextStyle}>
-            Sign In or Sign Up By Entering The Fields and Press Create!
-          </Text>
-        </CardSection>
+    <View>
+    <View alignItems = "center">
+          <Image
+            source = {require('../../Images/logo.png')}
+            style={{
+              width: 260,
+              height: 260,
+
+         }}/>
+    </View>
+    <View backgroundColor = "black">
+    <Text style = {styles.headTextStyle}>
+            {'Sign In or Sign Up'}
+    </Text>
+    </View>
+      
         <CardSection>
           <Input
             secureText = {false}
@@ -64,15 +74,16 @@ class LoginForm extends Component{
           />
         </CardSection>
         <Text style={styles.errorTextStyle}>{this.props.error}</Text>
-        <CardSection>
+        <ButtonCont>
           {this.renderButton()}
-        </CardSection>
-      <CardSection>
+        </ButtonCont>
+      <ButtonCont>
         <Button onPress = {this.onNewHere.bind(this)}>
-         <Text> Create </Text>
+         Signup 
         </Button>
-      </CardSection>
-      </Card>
+      </ButtonCont>
+      
+    </View>
     )
   }
 }
@@ -84,10 +95,11 @@ const styles = ({
     color:'red'
   },
   headTextStyle: {
-    fontSize: 15,
+    padding: 10,
+    fontSize: 25,
     fontWeight: 'bold',
     textAlign: 'center',
-    color: 'maroon'
+    color: 'white'
   }
 });
 
