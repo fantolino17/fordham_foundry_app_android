@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import LoginForm from '../../Components/LoginForm';
-import {View} from 'react-native';
+import {Text, View, Image} from 'react-native';
 import {logoutUser, loggedInUser} from '../../Actions';
 import {connect} from 'react-redux';
 import firebase from 'firebase';
 
 import NavBar from '../../Components/Header/NavBar';
 import ViewContainer from '../../Components/Common/ViewContainer';
-import {Card, CardSection, Button} from '../../Components/Common';
+import {Card, CardSection, Button, ButtonCont} from '../../Components/Common';
 
 
 class LoginScreen extends Component {
@@ -30,13 +30,25 @@ class LoginScreen extends Component {
     switch (this.props.loggedIn) {
       case true:
         return(
-          <Card>
-            <CardSection>
-              <Button onPress={(this.onLogOut.bind(this))}>
-                Log out
-              </Button>
-            </CardSection>
-          </Card>
+          <View>
+          <View alignItems = "center">
+              <Image source = {require('../../../Images/logo.png')} 
+                style={{
+                width: 260,
+                height: 260,
+                }}/>
+              </View>
+              <View>
+                <Text style = {styles.headTextStyle}>
+                  {firebase.auth().currentUser.email}
+                  </Text>
+                  </View>
+            
+              <ButtonCont>
+                <Button onPress={(this.onLogOut.bind(this))}> Log out </Button>
+              </ButtonCont>
+            
+          </View>
         )
       default:
         return <LoginForm />
@@ -46,12 +58,21 @@ class LoginScreen extends Component {
   render(){
     return (
     	<ViewContainer>
-			<NavBar wayto = {this.props.navigation}/>
+			
       		{this.renderContent()}
       	</ViewContainer>
     )
   }
 }
+
+const styles = ({
+  headTextStyle: {
+    padding: 10,
+    fontSize:  10,
+    textAlign: 'center',
+    color: 'black'
+  }
+});
 
 const mapStateToProps = state => {
   return {
