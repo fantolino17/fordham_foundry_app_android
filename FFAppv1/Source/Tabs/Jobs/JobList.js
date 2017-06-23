@@ -67,9 +67,9 @@ class JobList extends Component {
 				rows.unshift(
 				<TouchableOpacity onPress={() => {this.renderDes(temp,true)}}>
 					<CSCol>
-							<Text style={styles.userJobTextStyle}>{jb[key].category}</Text>
+							<Text style={styles.userJobStyle}>{jb[key].title.toUpperCase()}</Text>
 							<Text style={styles.nameStyle}>{jb[key].name}</Text>
-							<Text style = {styles.dateStyle}>Date</Text>
+							<Text style = {styles.dateStyle}>{jb[key].date}</Text>
 					</CSCol>
 
 				</TouchableOpacity>
@@ -78,9 +78,9 @@ class JobList extends Component {
 				rows.unshift(
 				<TouchableOpacity onPress={ ()=>{this.renderDes(temp,false)} }>
 					<CSCol>
-							<Text style={styles.catStyle}>{jb[key].category}</Text>
+							<Text style={styles.jobStyle}>{jb[key].title}</Text>
 							<Text style = {styles.nameStyle}>{jb[key].name}</Text>
-							<Text style = {styles.dateStyle}>Date</Text>
+							<Text style = {styles.dateStyle}>{jb[key].date}</Text>
 					</CSCol>
 				</TouchableOpacity>
 				)
@@ -157,17 +157,24 @@ const styles = StyleSheet.create({
   	paddingLeft: 8,
   	fontFamily: "GillSans"
   },
-	textStyle: {
+  jobStyle: {
+  	fontSize: 18,
+	paddingLeft: 8,
+	color: 'darkblue',
+	fontWeight: 'bold',
+	fontFamily: "GillSans"
+  },
+  textStyle: {
 		fontSize: 16,
 		fontWeight: 'bold'
-	},
-	userJobTextStyle:{
-		fontSize: 16,
-		paddingLeft: 8,
-		color: 'darkgreen',
-		fontWeight: 'bold',
-		fontFamily: "GillSans"
-	}
+  },
+  userJobStyle:{
+	fontSize: 18,
+	paddingLeft: 8,
+	color: 'darkgreen',
+	fontWeight: 'bold',
+	fontFamily: "GillSans"
+  }
 });
 
 const mapStateToProps = state => {

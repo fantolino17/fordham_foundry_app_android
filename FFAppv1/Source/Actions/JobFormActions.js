@@ -9,17 +9,18 @@ export const jobUpdate = ({prop, value}) => {
   }
 }
 
-export const jobCreate = ({name, contact, description, title, user}) => {
+export const jobCreate = ({name, contact, description, title, link, user}) => {
   //When rendering JobBoard, check UID with jobBoard[key].id
   //If matches, display delete button and call jobDelete
 
   //title name date contact description
   //id = firebase.auth().UID, remove from param list
   ref = firebase.database().ref(`/jobBoard`)
-  let date = new Date()
+  date = new Date()
+  date = `${date.getMonth()+1}/${date.getDate()}/${date.getFullYear()}`
 
   return (dispatch) => {
-    ref.push({name,contact,description,user,title,date})
+    ref.push({name,contact,description,user,title,date: date.toString(),link})
       .then( () => {
         ref.on('value', snapshot => {
           dispatch({

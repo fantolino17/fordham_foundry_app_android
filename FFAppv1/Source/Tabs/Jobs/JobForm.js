@@ -32,6 +32,7 @@ class JobForm extends Component{
             placeholder="Lookin' for..."
             value={this.props.description}
             onChangeText={text => this.props.jobUpdate({prop: 'description', value: text})}
+            multiline = {true}
           />
         </CardSection>
 
@@ -44,12 +45,20 @@ class JobForm extends Component{
           />
         </CardSection>
 
+        <CardSection>
+          <Input 
+            label="Link:"
+            placeholder="http://..."
+            value={this.props.link}
+            onChangeText={text => this.props.jobUpdate({prop: 'link', value: text})}
+          />
+        </CardSection>
       </View>
     )
   }
 }
 
-const styles = {
+const styles = ({
   pickerTextStyle:{
     fontSize: 18,
     paddingLeft: 23
@@ -66,11 +75,11 @@ const styles = {
     //width: 100,
     //height: 200
   }
-}
+});
  
 mapStateToProps = (state) => {
-  const {title,contact,description,category} = state.jobForm
-  return {title,contact,description,category}
+  const {title,contact,description,category, link} = state.jobForm
+  return {title,contact,description,category, link}
 }
 
 export default connect(mapStateToProps, {jobUpdate})(JobForm)

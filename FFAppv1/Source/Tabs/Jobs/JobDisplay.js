@@ -1,38 +1,51 @@
-import React from 'react'
-import {Text, View} from 'react-native'
+import React from 'react';
+import {Text, View, Linking, TouchableOpacity, StyleSheet} from 'react-native';
 import {connect} from 'react-redux';
-import TimeAgo from 'react-native-timeago'
 
-import {Card, CardSection, Button, Confirm} from '../../Components/Common'
+import {CardSection, Button, ButtonCont, LinkButton, DeleteButton} from '../../Components/Common';
 
 const renderButton = (canDelete, jobKey, jobDelete) => {    
   if(canDelete)
     return(
-      <CardSection>
-        <Button onPress={() => { jobDelete(jobKey) }}>
+        <DeleteButton onPress={() => { jobDelete(jobKey) }}>
           Delete
-        </Button>
-      </CardSection>
+        </DeleteButton>
     )
 }
 
-const JobDisplay = ({jobBoard, jobKey, canDelete, jobDelete}) => {
+const showButton = (jobBoard, jobKey) => 
+{
+    if(!jobBoard.hasOwnProperty(jobKey))
+    {
+      return
+    } 
+    else if(jobBoard[jobKey].link === '')
+    {
+      return
+    }
+    else {
+      return (
+       <LinkButton onPress = {() => Linking.openURL(`${jobBoard[jobKey].link}`)}>Learn more</LinkButton>
+      )
+  }
+}
+    
 
+const JobDisplay = ({jobBoard, jobKey, canDelete, jobDelete}) => {
   return (
     <View>
-        <View>
-        <Text style={styles.textStyle}>Business Name:</Text>
-        {jobBoard.hasOwnProperty(jobKey) ? <Text> {jobBoard[jobKey].name}</Text>:<Text></Text> }
-      
-        <Text style={styles.textStyle}>Field: </Text>
-        {jobBoard.hasOwnProperty(jobKey) ? <Text> {jobBoard[jobKey].category}</Text>:<Text></Text> }
-      
-        <Text style={styles.textStyle}>What we're looking for:</Text>
-        {jobBoard.hasOwnProperty(jobKey) ? <Text> {jobBoard[jobKey].description}</Text>:<Text></Text> }
-        
-        {jobBoard.hasOwnProperty(jobKey) ? <TimeAgo date={Date.parse(jobBoard[jobKey].date)} /> : <Text></Text>}
-
+        <View style = {styles.titleandname}>
+        {jobBoard.hasOwnProperty(jobKey) ? <Text style = {styles.titleStyle}>{`${jobBoard[jobKey].title}`}</Text>:<Text></Text>}
+        {jobBoard.hasOwnProperty(jobKey) ? <Text style = {styles.nameStyle}>{`${jobBoard[jobKey].name}`}</Text>:<Text></Text>}
         </View>
+        <View style = {styles.desc}>
+        {jobBoard.hasOwnProperty(jobKey) ? <Text style = {styles.descStyle}>{jobBoard[jobKey].description}</Text>:<Text></Text>}
+        </View>
+        <View style = {styles.contactCont}>
+        {jobBoard.hasOwnProperty(jobKey) ? <Text style = {styles.contactStyle}>{jobBoard[jobKey].contact}</Text>:<Text></Text>}
+        </View>
+        {showButton(jobBoard, jobKey)}
+        
 
       {canDelete ? renderButton(canDelete, jobKey, jobDelete):<Text></Text>}
 
@@ -41,10 +54,38 @@ const JobDisplay = ({jobBoard, jobKey, canDelete, jobDelete}) => {
 }
 
 const styles = {
+  titleandname: {
+    borderBottomWidth: StyleSheet.hairlineWidth,
+    paddingBottom: 10
+  },
+  desc: {
+    marginTop: 10
+  },
+  contactCont: {
+    marginTop: 20,
+    marginBottom: 40
+  },
 	textStyle: {
 		fontSize: 16,
 		fontWeight: 'bold'
-	}
+	},
+  titleStyle: {
+    fontSize: 30,
+    fontWeight: 'bold',
+    fontFamily: 'GillSans'
+  },
+  nameStyle: {
+    fontSize: 20,
+    fontFamily: 'GillSans-Light'
+  },
+  descStyle: {
+    fontSize: 16,
+    fontFamily: 'GillSans-Light'
+  },
+  contactStyle: {
+    fontSize: 16,
+    fontFamily: 'GillSans-Light'
+  }
 }
 
 export {JobDisplay}

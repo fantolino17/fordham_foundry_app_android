@@ -7,4 +7,7 @@ export * from './Spinner'
 export * from './Confirm'
 export * from './ButtonCont'
 export * from './CSCol'
+export * from './ViewContainer'
+export * from './LinkButton'
+export * from './DeleteButton'
 //Can import folder, will import this file bc named index

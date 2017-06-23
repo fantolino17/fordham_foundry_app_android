@@ -3,19 +3,37 @@ import {StyleSheet,Text,View,Image,TouchableHighlight, TouchableOpacity, Animate
 import MatIcon from 'react-native-vector-icons/MaterialIcons';
 
 var arrofImages = [
-    require('../../../Images/LIPhotoCMeyer.jpg'),
-    require('../../../Images/image1.jpg'),
     require('../../../Images/ALBartosic.png'),
+    require('../../../Images/anthonyp.jpg'),
+    require('../../../Images/LIPhotoCMeyer.jpg'),
+    require('../../../Images/Christine_Janssen.jpg'),
+    require('../../../Images/Enzo.jpg'),
+    require('../../../Images/KevinMcQuillan.png'),
+    require('../../../Images/fordham-rams-logo.png'),
+    require('../../../Images/MichaelMcSherry.png'),
+    require('../../../Images/MichaelPriest.png'),
+    require('../../../Images/image1.jpg'),
+    require('../../../Images/NicolaCorzine.png'),
+    require('../../../Images/NicoleJohnson.png'),
     require('../../../Images/shaunjohnsonsquare.jpg'),
-    require('../../../Images/Christine_Janssen.jpg')
+    require('../../../Images/fordham-rams-logo.png'),
 ];
 
 var arrofEmails = [
-  "mailto:cmeyer11@fordham.edu",
-  "mailto:ssoto15@fordham.edu",
-  "mailto:abartosic@fordham.edu",
-  "mailto:shaunejohnson@gmail.com",
-  "mailto:ssoto15@fordham.edu",
+  "mailto:fordhamfoundry@foundry.edu?subject=Hoping to contact Albert J. Bartosic",
+  "mailto:fordhamfoundry@foundry.edu?subject=Hoping to contact Anthony Parente",
+  "mailto:fordhamfoundry@foundry.edu?subject=Hoping to contact Chris Meyer",
+  "mailto:fordhamfoundry@foundry.edu?subject=Hoping to contact Christine Janssen",
+  "mailto:fordhamfoundry@foundry.edu?subject=Hoping to contact Enzo Obeso",
+  "mailto:fordhamfoundry@foundry.edu?subject=Hoping to contact Kevin McQuillan",
+  "mailto:fordhamfoundry@foundry.edu?subject=Hoping to contact Mariella Sypa",
+  "mailto:fordhamfoundry@foundry.edu?subject=Hoping to contact Michael McSherry",
+  "mailto:fordhamfoundry@foundry.edu?subject=Hoping to contact Michael Priest",
+  "mailto:fordhamfoundry@foundry.edu?subject=Hoping to contact Milton J. Sussberg",
+  "mailto:fordhamfoundry@foundry.edu?subject=Hoping to contact Nicola Corzine",
+  "mailto:fordhamfoundry@foundry.edu?subject=Hoping to contact Nicole Johnson",
+  "mailto:fordhamfoundry@foundry.edu?subject=Hoping to contact Shaun Johnson",
+  "mailto:fordhamfoundry@foundry.edu?subject=Hoping to contact Weiyu Shen",
 ];
 
 
@@ -51,15 +69,6 @@ class DandMPanel extends Component{
         this.setState({
             expanded : !this.state.expanded  //Step 2
         });
-
-        /*this.state.animation.setValue(initialValue);  //Step 3
-        Animated.spring(     //Step 4
-            this.state.animation,
-            {
-                toValue: finalValue
-            }
-        ).start();*/
-        
     }
 
     renderView() {
