@@ -12,12 +12,12 @@ const ButtonCont = (props) => {
 const styles = {
   containerStyle: {
     
-    padding: 10,
+    padding: 5,
     
     
     flexDirection: 'row',
     
-    position: 'relative'
+    
   }
 };
 

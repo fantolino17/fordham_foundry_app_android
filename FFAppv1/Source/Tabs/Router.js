@@ -7,8 +7,8 @@ import Homescreen from '../Tabs/Home/Homescreen';
 import Jobscreen from '../Tabs/Jobs/Jobscreen';
 import Bubblescreen from '../Tabs/Bubble/Bubblescreen';
 import FFBusscreen from '../Tabs/Bubble/FFBusscreen';
-import DandMscreen from '../Tabs/Bubble/DandMscreen';
-import Chatscreen from '../Tabs/Chat/Chatscreen';
+import DandMscreen from '../Tabs/DandM/DandMscreen';
+//import Chatscreen from '../Tabs/Chat/Chatscreen';
 import LoginScreen from '../Tabs/Login/LoginScreen';
 
 export const FFBusStack = StackNavigator ({
@@ -22,8 +22,7 @@ export const FFBusStack = StackNavigator ({
        			elevation: null
        		},
        		headerTitleStyle: {
-  				fontSize: 20,
-  				fontWeight: 'bold',
+  				fontSize: 20
 
   				
   			},
@@ -35,7 +34,7 @@ export const FFBusStack = StackNavigator ({
 	FFBus: {
 		screen: FFBusscreen,
 		navigationOptions: {
-			headerTitle: 'Fordham Businesses',
+			headerTitle: 'Foundry Businesses',
 			headerStyle: {
        			backgroundColor: '#f7f7f8',
        			elevation: null
@@ -43,8 +42,8 @@ export const FFBusStack = StackNavigator ({
        		headerTitleStyle: {
        			width: 214,
   				fontSize: 20,
+  				fontFamily: 'GillSans',
   				color: 'black',
-  				fontWeight: 'bold',
   				paddingBottom: 20
   			},
   			headerTintColor: 'maroon'
@@ -61,7 +60,7 @@ export const Tabs = TabNavigator ({
 		screen: Homescreen,
 		navigationOptions: {
 			tabBarLabel: 'Home',
-			tabBarIcon: ({tintColor, focused}) => <Icon name = {focused ? "ios-home":"ios-home-outline"} size = {36} color = {focused? "darkred":"black"}/>
+			tabBarIcon: ({tintColor, focused}) => <Icon name = {focused ? "ios-home":"ios-home-outline"} size = {32} color = {focused? "darkred":"black"}/>
 			}
 		},
 
@@ -69,7 +68,7 @@ export const Tabs = TabNavigator ({
 		screen: Jobscreen,
 		navigationOptions: {
 			tabBarLabel: 'Jobs',
-			tabBarIcon: ({tintColor, focused}) => <Icon name = {focused ? "ios-briefcase":"ios-briefcase-outline"} size = {36} color = {focused? "darkred":"black"}/>
+			tabBarIcon: ({tintColor, focused}) => <Icon name = {focused ? "ios-briefcase":"ios-briefcase-outline"} size = {32} color = {focused? "darkred":"black"}/>
 		}
 	},
 	
@@ -87,14 +86,14 @@ export const Tabs = TabNavigator ({
 		screen: DandMscreen,
 		navigationOptions: {
 			tabBarLabel: 'DandM',
-			tabBarIcon: ({tintColor, focused}) => <Icon name  = {focused ? "ios-people": "ios-people-outline"} size = {40} color = {focused? "darkred":"black"}/>
+			tabBarIcon: ({tintColor, focused}) => <Icon name  = {focused ? "ios-people": "ios-people-outline"} size = {38} color = {focused? "darkred":"black"}/>
 		}
 	},
 
 	Login: {
 		screen: LoginScreen,
 		navigationOptions: {
-			tabBarIcon: ({tintColor, focused}) => <Icon name  = {focused ? "ios-lock": "ios-lock-outline"} size = {36} color = {focused? "darkred":"black"}/>
+			tabBarIcon: ({tintColor, focused}) => <Icon name  = {focused ? "ios-lock": "ios-lock-outline"} size = {34} color = {focused? "darkred":"black"}/>
 			
 		}
 	},

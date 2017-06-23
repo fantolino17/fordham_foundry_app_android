@@ -21,12 +21,12 @@ class JobList extends Component {
 			showModal: false,
 			showDesModal: false,
 			curKey: null,
-			canDelete: false,
+			canDelete: false
 		}
 	}
 
 	componentWillMount(){
-		this.props.fetchJobs()		
+		this.props.fetchJobs()
 	}
 
 	renderModal(){

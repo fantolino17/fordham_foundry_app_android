@@ -48,7 +48,6 @@ class LoginScreen extends Component {
             <ButtonCont>
               <Button onPress={(this.onLogOut.bind(this))}> Log out </Button>
             </ButtonCont>
-
           </View>
         )
       default:

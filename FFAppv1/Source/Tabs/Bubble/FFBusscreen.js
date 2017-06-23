@@ -1,24 +1,31 @@
 import React, {Component} from 'react';
-import {Text, View, ListView} from 'react-native';
+import {Text, View, StyleSheet} from 'react-native';
+
+import ViewContainer from '../../Components/Common/ViewContainer';
+import FFBusList from './FFBusList';
 
 class FFBusscreen extends Component {
-	constructor() {
-		super();
-		const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-		this.state = {
-		  dataSource: ds.cloneWithRows(['row 1', 'row 2']),
-		};
-	}
-
 	render () {
 		return (
-			<ListView
-				removeClippedSubviews={false}
-				dataSource={this.state.dataSource}
-        		renderRow={(rowData) => <Text>{rowData}</Text>}
-			/>
+			<ViewContainer>
+			<View style = {styles.container}>
+			<Text style = {styles.textStyle}> Click the rows to learn more about each Foundry business </Text>
+			</View>
+			<FFBusList/>
+			</ViewContainer>
 			);
 	}
 }
 
+const styles = StyleSheet.create ({
+	container : {
+		backgroundColor: 'black',
+		alignItems: 'center'
+	},
+	textStyle: {
+		color: 'white',
+		fontSize: 16,
+		fontFamily: 'GillSans'
+	}
+})
 export default FFBusscreen;
