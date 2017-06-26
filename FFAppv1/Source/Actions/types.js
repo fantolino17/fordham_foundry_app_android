@@ -21,5 +21,6 @@ export const SELECT_INFO = 'select_info'
 export const SELECT_JOB = 'select_job'
 
 export const EVENTS_FETCH_SUCCESS = 'event_fetch_success'
+export const NOT_SET_SUCCESS = 'not_set_success'
 
 export const UPDATES_FETCH_SUCCESS = 'updates_fetch_success'
