@@ -94,12 +94,11 @@ class JobList extends Component {
 
 		return(
 			<View>
-				<ButtonCont>
+				<View  alignItems = "center" paddingBottom = {5} borderBottomWidth = {StyleSheet.hairlineWidth}>
 					<Button onPress={this.renderModal.bind(this)}>
 					Post to the Job Board!
 					</Button>
-				</ButtonCont>
-
+				</View>
 			{this.fetchJobBoard()}
 			
 			<Confirm
@@ -171,7 +170,7 @@ const styles = StyleSheet.create({
   userJobStyle:{
 	fontSize: 18,
 	paddingLeft: 8,
-	color: 'darkgreen',
+	color: '#4AB312',
 	fontWeight: 'bold',
 	fontFamily: "GillSans"
   }

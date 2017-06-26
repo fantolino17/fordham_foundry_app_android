@@ -44,10 +44,7 @@ class LoginScreen extends Component {
                 {firebase.auth().currentUser.email}
               </Text>
              </View>
-
-            <ButtonCont>
               <Button onPress={(this.onLogOut.bind(this))}> Log out </Button>
-            </ButtonCont>
           </View>
         )
       default:

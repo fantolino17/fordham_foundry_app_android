@@ -10,4 +10,5 @@ export * from './CSCol'
 export * from './ViewContainer'
 export * from './LinkButton'
 export * from './DeleteButton'
+export * from './LoginInput'
 //Can import folder, will import this file bc named index

@@ -34,7 +34,7 @@ const Confirm = ({children,visible,onReturn}) => {
 
 const styles={
   cardSectionStyle:{
-    justifyContent:'center'
+    //justifyContent:'center'
   },
   textStyle:{
     flex:1,
