@@ -1,10 +1,9 @@
 import React, {Component} from 'react';
 import {Text, View, ListView, ScrollView, TouchableOpacity} from 'react-native';
-import { connect } from 'react-redux'
-import { readEvents } from '../../Actions'
-import {EventDisplay} from './EventDisplay'
-import { Confirm, Header } from '../../Components/Common'
-
+import { connect } from 'react-redux';
+import { readEvents } from '../../Actions';
+import {EventDisplay} from './EventDisplay';
+import { Confirm, Header } from '../../Components/Common';
 
 class EventList extends Component {
 	constructor(props) {
@@ -44,7 +43,6 @@ class EventList extends Component {
 	render () {
 		return (
 			<View>
-				<Text> events page</Text>
 				<ScrollView>
 					{this.renderEvents()}
 				</ScrollView>

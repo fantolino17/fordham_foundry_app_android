@@ -17,7 +17,7 @@ const DeleteButton = ({ onPress, children }) => {
 
 const styles = {
   container: {
-    padding: 5,
+    paddingTop: 10,
     flexDirection: 'row',
   },
   textStyle: {
@@ -25,15 +25,13 @@ const styles = {
     color: 'white',
     fontSize: 16,
     fontWeight: '600',
-    paddingTop: 8,
-    paddingBottom: 8
+    padding: 8
   },
   buttonStyle: {
     flex: 1,
     alignSelf: 'stretch',
     backgroundColor: 'maroon',
     borderRadius: 5,
-    borderWidth: 2,
     borderColor: 'black',
     marginLeft: 40,
     marginRight: 40

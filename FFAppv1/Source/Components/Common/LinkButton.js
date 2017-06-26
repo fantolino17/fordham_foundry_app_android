@@ -17,26 +17,26 @@ const LinkButton = ({ onPress, children }) => {
 
 const styles = {
   container: {
-    padding: 5,
     flexDirection: 'row',
+    //paddingTop: 5,
+    paddingRight: 275,
+    marginBottom: 10,
   },
   textStyle: {
     alignSelf: 'center',
     color: 'white',
     fontSize: 16,
     fontWeight: '600',
-    paddingTop: 8,
-    paddingBottom: 8
+    padding: 8
   },
   buttonStyle: {
     flex: 1,
-    alignSelf: 'stretch',
+    //alignSelf: 'stretch',
     backgroundColor: '#0981CC',
     borderRadius: 5,
-    borderWidth: 2,
+    
     borderColor: 'black',
-    marginLeft: 100,
-    marginRight: 100
+    
   }
 };
 

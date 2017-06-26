@@ -1,26 +1,64 @@
 import React from 'react'
-import {Text, View, TouchableOpacity} from 'react-native'
+import {StyleSheet, Text, View, TouchableOpacity, Button} from 'react-native'
 import {connect} from 'react-redux';
-import {Card, CardSection, Button, Confirm} from '../../Components/Common'
+import {Card, CardSection, Confirm} from '../../Components/Common'
 
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const EventDisplay = ({title, location, date, time}) => {
 console.log(title)
   return (
-    <Card>
+      <Card justifyContent = "center">
+        <View style = {styles.container}>
         <View>
-          {title!==null ? <Text>{title}</Text> : <Text>The title is not specified</Text>}
-          {location!==null ? <Text>{location}</Text> : <Text>The location is not specified</Text>}
-          {date!==null ? <Text>{date}</Text> : <Text>The date is not specified</Text>}
-          {time!==null ? <Text>{time}</Text> : <Text>The time is not specified</Text>}
+          {title!==null ? <Text style = {styles.titleStyle}>{title}</Text> : <Text style = {styles.titleStyle}>The title is not specified</Text>}
+          {location!==null ? <Text style = {styles.whereStyle}>{location}</Text> : <Text style = {styles.whereStyle}>The location is not specified</Text>}
         </View>
-        
-        <Button>
-          Set Reminder!
-        </Button>
-
-    </Card>
+        <View flexDirection = "row" alignItems = "center" marginBottom = {10}>
+          <View>
+            {date!==null ? <Text style = {styles.dateStyle}>{date} @ </Text> : <Text style = {styles.dateStyle}>The date is not specified</Text>}
+          </View>
+          {time!==null ? <Text style = {styles.whenStyle}>{time}</Text> : <Text style = {styles.whenStyle}>The time is not specified</Text>}
+        </View>
+        <View style = {styles.buttonCont}>
+          <Icon.Button justifyContent = "center" name = "ios-alarm" backgroundColor = "#4AB312" color = "white">
+             Remind me!
+          </Icon.Button>
+        </View>
+        </View>
+      </Card>
   )
 }
+
+const styles = StyleSheet.create ({
+  container: {
+    padding: 5,
+    alignItems: 'center',
+    //justifyContent: 'center'
+    //backgroundColor: "#"
+  },
+  buttonCont: {
+    height: 45,
+    width: 130,
+  },
+  titleStyle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    fontFamily: "GillSans"
+  },
+  whereStyle: {
+    fontSize: 16,
+    fontFamily: "GillSans-Light"
+  },
+  dateStyle: {
+    fontSize: 18,
+    fontFamily: "GillSans-Light"
+  },
+  whenStyle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    fontFamily: "GillSans-Light"
+  }
+});
 
 export { EventDisplay }

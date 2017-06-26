@@ -1,7 +1,7 @@
 import React,{Component} from 'react'
 import {Text, View, Image, KeyboardAvoidingView} from 'react-native'
 import {connect} from 'react-redux'
-import {Card, CardSection, Input, Button, ButtonCont, Spinner} from './Common'
+import {Card, CardSection, LoginInput, Button, ButtonCont, Spinner} from './Common'
 import {emailChanged, passwordChanged, loginUser, newUser} from '../Actions'
 
 class LoginForm extends Component{
@@ -30,9 +30,11 @@ class LoginForm extends Component{
       return <Spinner size="large"/>
     }
     return (
+      <View alignItems = "center" marginBottom = {4}>
       <Button onPress={this.onButtonPress.bind(this)}>
          Login     
       </Button>
+      </View>
     )
   }
 
@@ -56,7 +58,7 @@ class LoginForm extends Component{
     </View>
       
         <CardSection>
-          <Input
+          <LoginInput
             secureText = {false}
             onChangeText={this.onEmailChange.bind(this)}
             label="Email"
@@ -66,7 +68,7 @@ class LoginForm extends Component{
         </CardSection>
 
         <CardSection>
-          <Input 
+          <LoginInput 
             secureText = {true}
             label="Password"
             placeholder="password"
@@ -75,15 +77,13 @@ class LoginForm extends Component{
           />
         </CardSection>
         <Text style={styles.errorTextStyle}>{this.props.error}</Text>
-        <ButtonCont>
+        
           {this.renderButton()}
-        </ButtonCont>
-        <ButtonCont>
+        <View alignItems = "center">
         <Button onPress = {this.onNewHere.bind(this)}>
          Signup 
         </Button>
-      </ButtonCont>
-      
+        </View>
     </View>
     </KeyboardAvoidingView>
     )
