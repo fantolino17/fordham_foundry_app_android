@@ -5,8 +5,22 @@ import {Card, CardSection, Confirm} from '../../Components/Common'
 
 import Icon from 'react-native-vector-icons/Ionicons';
 
-const EventDisplay = ({title, location, date, time}) => {
-console.log(title)
+const renderAddToCalender = (title, date, time, location,
+                            alarm_year, alarm_month, alarm_day, alarm_hour, alarm_min, remindMe ) => {
+
+      return (
+        <View style = {styles.buttonCont}>
+          <Icon.Button justifyContent = "center" name = "ios-alarm" backgroundColor = "#4AB312" color = "white" 
+                       onPress={ () => { remindMe(title, date, time, location, alarm_year, alarm_month, alarm_day, alarm_hour, alarm_min)} }>
+             Remind me!
+          </Icon.Button>
+        </View>
+      )
+}
+
+const EventDisplay = ({title, location, date, time,
+                      alarm_year, alarm_month, alarm_day, alarm_hour, alarm_min, remindMe}) => {
+
   return (
       <Card justifyContent = "center">
         <View style = {styles.container}>
@@ -20,12 +34,9 @@ console.log(title)
           </View>
           {time!==null ? <Text style = {styles.whenStyle}>{time}</Text> : <Text style = {styles.whenStyle}>The time is not specified</Text>}
         </View>
-        <View style = {styles.buttonCont}>
-          <Icon.Button justifyContent = "center" name = "ios-alarm" backgroundColor = "#4AB312" color = "white">
-             Remind me!
-          </Icon.Button>
         </View>
-        </View>
+        {renderAddToCalender(title, date, time, location, 
+                          alarm_year, alarm_month, alarm_day, alarm_hour, alarm_min, remindMe)}
       </Card>
   )
 }
