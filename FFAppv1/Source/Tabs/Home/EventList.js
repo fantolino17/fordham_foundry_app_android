@@ -5,7 +5,6 @@ import { readEvents, remindMe } from '../../Actions'
 import {EventDisplay} from './EventDisplay'
 import { Confirm, Header } from '../../Components/Common'
 
-
 class EventList extends Component {
 	constructor(props) {
 		super(props);
@@ -50,7 +49,6 @@ class EventList extends Component {
 	render () {
 		return (
 			<View>
-				<Text> events page</Text>
 				<ScrollView>
 					{this.renderEvents()}
 				</ScrollView>

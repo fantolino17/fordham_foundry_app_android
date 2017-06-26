@@ -7,58 +7,68 @@ import {jobUpdate} from '../../Actions';
 class JobForm extends Component{
   render(){
     return (
-      <View>
-         <CardSection>
+      <View flexDirection = "column">
+          <View style = {styles.containerStyle}>
           <Input 
             label="Job Title"
-            placeholder="title/position"
+            placeholder="Title/Position"
             value={this.props.title}
             onChangeText={text => this.props.jobUpdate({prop: 'title', value: text})}
           />
-        </CardSection>
-
-        <CardSection>
+          </View>
+        
+          <View style = {styles.containerStyle}>
           <Input 
             label="Business/Name:"
             placeholder="user@user.com"
             value={this.props.name}
             onChangeText={text => this.props.jobUpdate({prop: 'name', value: text})}
           />
-        </CardSection>
+          </View>
         
-        <CardSection>
+          <View style = {styles.containerStyle}>
           <Input 
             label="Description:"
             placeholder="Lookin' for..."
             value={this.props.description}
             onChangeText={text => this.props.jobUpdate({prop: 'description', value: text})}
             multiline = {true}
+            height = {80}
           />
-        </CardSection>
+          </View>
 
-        <CardSection>
+          <View style = {styles.containerStyle}>
           <Input 
             label="Contact:"
             placeholder="user@user.com"
             value={this.props.contact}
             onChangeText={text => this.props.jobUpdate({prop: 'contact', value: text})}
           />
-        </CardSection>
+          </View>
 
-        <CardSection>
+          <View style = {styles.containerStyle}>
           <Input 
             label="Link:"
             placeholder="http://..."
             value={this.props.link}
             onChangeText={text => this.props.jobUpdate({prop: 'link', value: text})}
           />
-        </CardSection>
+          </View>
       </View>
     )
   }
 }
 
 const styles = ({
+  containerStyle: {
+    //borderBottomWidth: 2,
+    //padding: 10,
+    flexDirection: 'row',
+    /*backgroundColor: '#fff',
+    //justifyContent: 'space-around',
+    borderColor: 'black',
+    position: 'relative',*/
+  },
   pickerTextStyle:{
     fontSize: 18,
     paddingLeft: 23

@@ -3,13 +3,13 @@ export default data = [
 		"id": 0,
 		"name": "Albert J. Bartosic",
 		"title": "Entrepreneur in Residence & Board Member",
-		"desc": "\u2022Serial entrepreneur with extensive experience in cloud-based applications and their interface with medical devices. Industrial expertise includes private equity, financial services, consumer products, technology, entertainment, and public accounting.\n\u2022 Has spent the last 12 years of his 30-year management career as CEO of Standing Stone Inc., a medical software company. Advises startups, serves on the boards of Ridgefield Academy and other nonprofits, and is a director of SecLingua, a cybersecurity company serving the medical industry.\n\u2022 A certified public accountant, Bartosic holds a MBA from New York University and a BS from Fordham University. "
+		"desc": "\u2022 Serial entrepreneur with extensive experience in cloud-based applications and their interface with medical devices. Industrial expertise includes private equity, financial services, consumer products, technology, entertainment, and public accounting.\n\u2022 Has spent the last 12 years of his 30-year management career as CEO of Standing Stone Inc., a medical software company. Advises startups, serves on the boards of Ridgefield Academy and other nonprofits, and is a director of SecLingua, a cybersecurity company serving the medical industry.\n\u2022 A certified public accountant, Bartosic holds a MBA from New York University and a BS from Fordham University. "
 	},
 	{
 		"id": 1,
 		"name": "Anthony Parente",
 		"title": "Student",
-		"desc": "Skills:\n  \u2022 I am knowledgeable about most emerging technologies - not an absolute expert, but am well-versed.\n\u2022 Reach out to me to learn from my experiences in building Pathos - I’ve had tons of failure, but many lessons learned!\n\u2022 Although I have failed so much, I feel that with every failure I come one step closer to success"
+		"desc": "Skills:\n\u2022 I am knowledgeable about most emerging technologies - not an absolute expert, but am well-versed.\n\u2022 Reach out to me to learn from my experiences in building Pathos - I’ve had tons of failure, but many lessons learned!\n\u2022 Although I have failed so much, I feel that with every failure I come one step closer to success"
 	},
 	{
 		"id": 2,

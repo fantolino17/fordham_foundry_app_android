@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import {Text, View, StyleSheet, TouchableOpacity, Linking} from 'react-native';
+import {Text, View, StyleSheet, Linking} from 'react-native';
 
 import NavBar from '../../Components/Header/NavBar';
 import ViewContainer from '../../Components/Common/ViewContainer';
 import DandMList from './DandMList';
-import {ButtonCont, Button} from '../../Components/Common';
+import {Button} from '../../Components/Common';
 
 class DandMscreen extends Component {
 	render () {
@@ -15,9 +15,9 @@ class DandMscreen extends Component {
 			<Text style = {styles.textStyle}> Click the rows to learn more about each mentor </Text>
 			</View>
 			<DandMList/>
-			<ButtonCont>
+			<View alignItems = "center" paddingTop = {5} borderTopWidth = {StyleSheet.hairlineWidth}>
 			<Button onPress = {() => Linking.openURL('https://www.fordhamfoundry.org/about-us/team/')}> Click to learn more </Button>
-			</ButtonCont>
+			</View>
 			</ViewContainer>
 			);
 	}

@@ -7,9 +7,11 @@ import {CardSection, Button, ButtonCont, LinkButton, DeleteButton} from '../../C
 const renderButton = (canDelete, jobKey, jobDelete) => {    
   if(canDelete)
     return(
+      <View borderTopWidth = {StyleSheet.hairlineWidth}>
         <DeleteButton onPress={() => { jobDelete(jobKey) }}>
           Delete
         </DeleteButton>
+      </View>
     )
 }
 
@@ -25,7 +27,7 @@ const showButton = (jobBoard, jobKey) =>
     }
     else {
       return (
-       <LinkButton onPress = {() => Linking.openURL(`${jobBoard[jobKey].link}`)}>Learn more</LinkButton>
+        <LinkButton onPress = {() => Linking.openURL(`${jobBoard[jobKey].link}`)}>Learn more</LinkButton>
       )
   }
 }
@@ -63,7 +65,7 @@ const styles = {
   },
   contactCont: {
     marginTop: 20,
-    marginBottom: 40
+    marginBottom: 20
   },
 	textStyle: {
 		fontSize: 16,

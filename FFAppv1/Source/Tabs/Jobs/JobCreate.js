@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {Text, TouchableWithoutFeedback} from 'react-native';
+import {Text, View, TouchableWithoutFeedback} from 'react-native';
 import firebase from 'firebase';
 import {jobUpdate, jobCreate, fetchJobs} from '../../Actions';
 import {Card, CardSection, Button, Confirm} from '../../Components/Common';
@@ -46,14 +46,16 @@ class JobCreate extends Component {
 
   render(){
     return (
-      <Card>
+      <View>
+      
         <JobForm {...this.props}/>
-        <CardSection>
+      
+          <View paddingTop = {15} alignItems = "center">
           <Button onPress={this.onButtonPress.bind(this)}>
             Create
           </Button>
-        </CardSection>
-      </Card>
+          </View>
+      </View>
     )
   }
 }
