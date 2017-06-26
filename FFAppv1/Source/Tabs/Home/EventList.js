@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Text, View, ListView, ScrollView, TouchableOpacity} from 'react-native';
 import { connect } from 'react-redux'
-import { readEvents } from '../../Actions'
+import { readEvents, remindMe } from '../../Actions'
 import {EventDisplay} from './EventDisplay'
 import { Confirm, Header } from '../../Components/Common'
 
@@ -22,7 +22,7 @@ class EventList extends Component {
 
 	renderEvents(){
 		events = this.props.events
-
+		
 		if(events === null){
 			return <Text>No Upcoming Events!</Text>
 		}
@@ -34,7 +34,13 @@ class EventList extends Component {
 				title={key}
 				location={events[key].location}
 				time={events[key].time}
-				date={events[key].date} 
+				date={events[key].date}
+				alarm_year={events[key].alarm_year}
+				alarm_month={events[key].alarm_month}
+				alarm_day={events[key].alarm_day}
+				alarm_hour={events[key].alarm_hour}
+				alarm_min={events[key].alarm_min}
+				remindMe={this.props.remindMe}
 				/>
 			)
 		}
@@ -58,4 +64,4 @@ const mapStateToProps = state =>{
 	return { events }
 }
 
-export default connect(mapStateToProps, { readEvents })(EventList)
+export default connect(mapStateToProps, { readEvents, remindMe })(EventList)
