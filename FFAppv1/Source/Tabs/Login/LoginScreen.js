@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import LoginForm from '../../Components/LoginForm';
-import {Text, View, Image} from 'react-native';
+import {Text, View, Image, KeyboardAvoidingView} from 'react-native';
 import {logoutUser, loggedInUser} from '../../Actions';
 import {connect} from 'react-redux';
 import firebase from 'firebase';
