@@ -12,6 +12,7 @@ const Input = ({label, value, onChangeText, placeholder, secureText, multiline, 
 			<TextInput
 				autoCapitalize = 'none'
 				secureTextEntry = {secureText}
+				underlineColorAndroid='rgba(0,0,0,0)'
 				placeholder = {placeholder}
 				autoCorrect = {false}
 				style = {inputStyle}
@@ -27,31 +28,41 @@ const Input = ({label, value, onChangeText, placeholder, secureText, multiline, 
 
 const styles = {
 	containerStyle: {
+      //flex: 1,
+      //alignItems: 'center',
+      //justifyContent:'center',
+      //paddingTop: 23
 		flex: 1,
-		flexDirection: 'column',
-		height: undefined,
-		marginBottom: 5
-		//alignItems: 'center'
+		//flexDirection: 'column',
+		//height: undefined,
+		marginBottom: 0,
+		// alignItems: 'center',
+		padding: 0
 	},
 	inputStyle: {
-		//height: 20,
-		color: '#000',
-		paddingRight: 5,
-		width: 380,
-		//height: 30,
-		fontSize: 18,
-		//lineHeight: 23,
-		//flex: 1,
-		paddingLeft: 10,
-		borderColor: 'black',
-		borderWidth: StyleSheet.hairlineWidth
+			padding:0,
+			paddingLeft: 5,
+      margin:0,
+      //height: 40,
+      borderColor: 'grey',
+      borderWidth: 1,
+		// color: '#000',
+		// paddingRight: 5,
+		 alignSelf: "stretch",
+		// height: 30,
+		// fontSize: 18,
+		//  lineHeight: 75,
+		// //flex: 1,
+		// paddingLeft: 10,
+		// borderColor: 'black',
+		// borderWidth: StyleSheet.hairlineWidth
 	},
 	labelStyle: {
 		//flex: 1,
 		fontSize: 18,
 		paddingBottom: 5,
 		fontWeight: 'bold',
-		fontFamily: "GillSans-Light"
+		fontFamily: "sans-serif"
 	}
 }
 

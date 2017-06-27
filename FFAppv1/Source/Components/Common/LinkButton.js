@@ -19,7 +19,7 @@ const styles = {
   container: {
     flexDirection: 'row',
     //paddingTop: 5,
-    paddingRight: 275,
+    // paddingRight: 275,
     marginBottom: 10,
   },
   textStyle: {
@@ -34,7 +34,7 @@ const styles = {
     //alignSelf: 'stretch',
     backgroundColor: '#0981CC',
     borderRadius: 5,
-    
+    width: 150,
     borderColor: 'black',
     
   }
