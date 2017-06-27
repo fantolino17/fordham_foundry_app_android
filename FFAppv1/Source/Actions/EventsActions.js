@@ -31,7 +31,8 @@ export const remindMe = (title, date, time, location, alarm_year, alarm_month, a
       },
       // Should the initial notification be popped automatically
       // default: true
-      popInitialNotification: true,
+      popInitialNotification: false,
+      //getInitialNotification: false,
           /**
       * (optional) default: true
       * - Specified if permissions (ios) and token (android and ios) will requested or not,
@@ -49,7 +50,6 @@ export const remindMe = (title, date, time, location, alarm_year, alarm_month, a
     //   //repeatType: 'day', // (Android only) Repeating interval. Could be one of `week`, `day`, `hour`, `minute, `time`. If specified as time, it should be accompanied by one more parameter 'repeatTime` which should the number of milliseconds between each interval
     //   //actions: '["Yes", "No"]',  // (Android only) See the doc for notification actions to know more
     // });
-
     PushNotification.localNotificationSchedule({
       message: `${title} ${time} ${location}`,
       number: 1,
