@@ -34,6 +34,9 @@ const showButton = (jobBoard, jobKey) =>
     
 
 const JobDisplay = ({jobBoard, jobKey, canDelete, jobDelete}) => {
+  if(jobBoard === null){
+    return null
+  }
   return (
     <View>
         <View style = {styles.titleandname}>
@@ -49,7 +52,7 @@ const JobDisplay = ({jobBoard, jobKey, canDelete, jobDelete}) => {
         {showButton(jobBoard, jobKey)}
         
 
-      {canDelete ? renderButton(canDelete, jobKey, jobDelete):<Text></Text>}
+        {canDelete ? renderButton(canDelete, jobKey, jobDelete):<Text></Text>}
 
     </View>
   )

@@ -34,9 +34,10 @@ const EventDisplay = ({title, location, date, time,
           </View>
           {time!==null ? <Text style = {styles.whenStyle}>{time}</Text> : <Text style = {styles.whenStyle}>The time is not specified</Text>}
         </View>
-        </View>
+       
         {renderAddToCalender(title, date, time, location, 
                           alarm_year, alarm_month, alarm_day, alarm_hour, alarm_min, remindMe)}
+        </View>
       </Card>
   )
 }

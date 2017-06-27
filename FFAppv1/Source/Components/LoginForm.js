@@ -40,7 +40,8 @@ class LoginForm extends Component{
 
   render(){
     return(
-    <KeyboardAvoidingView>
+    <KeyboardAvoidingView
+    behavior="padding" >
     <View>
     <View alignItems = "center">
           <Image
