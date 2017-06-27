@@ -93,34 +93,31 @@ class JobList extends Component {
 	render() {
 
 		return(
-			<View>
+			<View style={{flex:1}}>
 				<View  alignItems = "center" paddingBottom = {5} borderBottomWidth = {StyleSheet.hairlineWidth}>
 					<Button onPress={this.renderModal.bind(this)}>
 					Post to the Job Board!
 					</Button>
 				</View>
-			{this.fetchJobBoard()}
-			
-			<Confirm
-        visible={this.state.showModal}
-        onReturn={this.onReturn.bind(this)}
-			>
-			
-				<JobCreate style={{flex:1}}/>
-			
-			</Confirm>
 
-			<Confirm 
-				visible={this.state.showDesModal}
-				onReturn={this.onReturn.bind(this)}
-			>
+				{this.props.jb===null ? <Text>No Jobs Posted</Text>: <Text></Text>}
+
+				{this.fetchJobBoard()}
+				
+				<Confirm
+					visible={this.state.showModal}
+					onReturn={this.onReturn.bind(this)}
+				>
+					<JobCreate style={{flex:1}}/>
+				</Confirm>
+
+				<Confirm 
+					visible={this.state.showDesModal}
+					onReturn={this.onReturn.bind(this)}
+				>
 					<JobDisplay jobBoard={this.props.jb} jobKey={this.state.curKey} canDelete={this.state.canDelete} jobDelete={this.props.jobDelete} />
-			</Confirm>
-			
-
+				</Confirm>
 			</View>
-
-		
 		);
 	}
 }

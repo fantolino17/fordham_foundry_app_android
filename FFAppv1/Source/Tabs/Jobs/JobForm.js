@@ -1,13 +1,15 @@
 import React, {Component} from 'react';
-import {View, Text, Picker} from 'react-native';
-import {CardSection, Input} from '../../Components/Common';
+import {View, Text, Picker, ScrollView, KeyboardAvoidingView} from 'react-native';
+import {Card, CardSection, Input} from '../../Components/Common';
 import {connect} from 'react-redux';
 import {jobUpdate} from '../../Actions';
 
 class JobForm extends Component{
   render(){
     return (
-      <View flexDirection = "column">
+        <KeyboardAvoidingView
+        behavior="height"
+        keyboardVerticalOffset="0">
           <View style = {styles.containerStyle}>
           <Input 
             label="Job Title"
@@ -20,7 +22,7 @@ class JobForm extends Component{
           <View style = {styles.containerStyle}>
           <Input 
             label="Business/Name:"
-            placeholder="user@user.com"
+            placeholder="your (business) name here"
             value={this.props.name}
             onChangeText={text => this.props.jobUpdate({prop: 'name', value: text})}
           />
@@ -33,7 +35,7 @@ class JobForm extends Component{
             value={this.props.description}
             onChangeText={text => this.props.jobUpdate({prop: 'description', value: text})}
             multiline = {true}
-            height = {80}
+            height = {60}
           />
           </View>
 
@@ -54,7 +56,7 @@ class JobForm extends Component{
             onChangeText={text => this.props.jobUpdate({prop: 'link', value: text})}
           />
           </View>
-      </View>
+        </KeyboardAvoidingView>
     )
   }
 }

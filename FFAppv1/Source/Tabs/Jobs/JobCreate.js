@@ -17,9 +17,6 @@ class JobCreate extends Component {
   renderModal(){
     this.setState({showModal: true})
   }
-  /*onReturn(){
-    this.setState({showModal: false})
-  }*/
 
   onButtonPress(){
     const {name, contact, description, title, link, user, loggedIn} = this.props
