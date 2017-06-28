@@ -11,4 +11,6 @@ export * from './ViewContainer'
 export * from './LinkButton'
 export * from './DeleteButton'
 export * from './LoginInput'
+export * from './EventButton'
+export * from './UpdateButton'
 //Can import folder, will import this file bc named index
