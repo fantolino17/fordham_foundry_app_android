@@ -1,7 +1,10 @@
 import React, {Component} from 'react';
-import {Text, View, ListView} from 'react-native';
-import { readUpdates } from '../../Actions'
-import { connect } from 'react-redux'
+import {Text, View, ListView, ScrollView} from 'react-native';
+import { readUpdates } from '../../Actions';
+import { connect } from 'react-redux';
+
+import {UpdateDisplay} from './UpdateDisplay';
+import ViewContainer from '../../Components/Common/ViewContainer';
 
 class UpdateList extends Component {
 	constructor(props) {
@@ -18,18 +21,24 @@ class UpdateList extends Component {
 		updates = this.props.updates
 
 		list = []
-		temp = ''
+		//temp = ''
 		for(key in updates){
-			temp = key
+			const temp = key
+
+			console.log(" render updates")
 			console.log(updates[key].business)
 			console.log(updates[key].update)
 			console.log(updates[key].date)
+			console.log(updates[key].link)
+			
 			list.unshift(
-				<View>
-					<Text>{updates[key].business}</Text>
-					<Text>{updates[key].update}</Text>
-					<Text>{updates[key].date}</Text>
-				</View>
+				<UpdateDisplay
+					key = {key}
+					title = {updates[key].business}
+					update = {updates[key].update}
+					date = {updates[key].date}
+					link = {updates[key].link}
+					/>
 			)
 
 			//updates[key].business is the name i.e Pathos or Ventir
@@ -37,15 +46,13 @@ class UpdateList extends Component {
 			//updates[key].date is the date it was posted
 			//style like mentor page, events too?
 		}
-		return list
+		return <View>{list}</View>
 	}
 	
 	render () {
 		console.log(this.props.updates)
 		return (
-			<View>
-				{this.renderUpdates()}
-			</View>
+				<ScrollView marginTop = {10}>{this.renderUpdates()}</ScrollView>
 		)
 	}
 }
