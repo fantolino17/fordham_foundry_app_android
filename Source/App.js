@@ -12,7 +12,7 @@ import NavBar from './Components/Header/NavBar';
 import {Tabs} from './Tabs/Router';
 import ViewContainer from './Components/Common/ViewContainer';
 import {Scene} from 'react-native-router-flux'
-import LoginForm from './Components/LoginForm'
+import LoginForm from './Tabs/Login/LoginForm'
 //import LibraryList from './Components/LibraryList';
 
 class App extends Component {

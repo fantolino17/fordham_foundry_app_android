@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Text, View, ListView, StyleSheet} from 'react-native';
 
 import DandMRow from './DandMRow';
-import data from '../../Reducers/Json/DandM';
+import data from '../../Data/DandM';
 
 class DandMList extends Component {
 	constructor() {

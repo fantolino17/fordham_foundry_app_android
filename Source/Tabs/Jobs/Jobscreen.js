@@ -13,18 +13,30 @@ class Jobscreen extends Component {
 	render () {
 		return (
 			
-			<ViewContainer>
-			<NavBar wayto = {this.props.navigation}/>
-			{/*<ScrollableTabView tabBarTextStyle = {{fontSize: 12}}>*/}
-			
+			<View flex={1}>
+				<NavBar wayto = {this.props.navigation}/>
+					<View style = {styles.container}>
+					<Text style = {styles.textStyle}> 
+						Looking for someone to help take your business to the next level? Or maybe just lend a helping hand? Post your job or skill here!”
+					</Text>
+				</View>
 				<JobList/>
-				{/*<LofBusinesses tabLabel = "Businesses @ Fordham"/>*/}
-			
-			{/*</ScrollableTabView>*/}
-			</ViewContainer>
-			
+			</View>
 			);
 	}
 }
+	const styles = StyleSheet.create ({
+		container : {
+			backgroundColor: 'maroon',
+			alignItems: 'center',
+			marginBottom: 10
+		},
+		textStyle: {
+			color: 'white',
+			fontSize: 12,
+			fontFamily: 'GillSans',
+			textAlign: 'center'
+		}
+	})
 
 export default Jobscreen;

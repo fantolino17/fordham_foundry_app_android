@@ -23,17 +23,18 @@ class EventList extends Component {
 		events = this.props.events
 		
 		if(events === null){
-			return <Text>No Upcoming Events!</Text>
+			return <View alignItems = "center"><Text>No Upcoming Events!</Text></View>
 		}
-		list = []
+		else {list = []
 		for(key in events){
-			const temp = key
+			//const temp = key
 			list.push(
 				<EventDisplay 
 				title={key}
 				location={events[key].location}
 				time={events[key].time}
 				date={events[key].date}
+				link={events[key].link}
 				alarm_year={events[key].alarm_year}
 				alarm_month={events[key].alarm_month}
 				alarm_day={events[key].alarm_day}
@@ -41,18 +42,17 @@ class EventList extends Component {
 				alarm_min={events[key].alarm_min}
 				remindMe={this.props.remindMe}
 				/>
-			)
+				)
+			}
 		}
 		return <View>{list}</View>
 	}
 
 	render () {
 		return (
-			<View>
-				<ScrollView>
+				<ScrollView marginTop = {10}>
 					{this.renderEvents()}
 				</ScrollView>
-			</View>
 			)
 	}
 }

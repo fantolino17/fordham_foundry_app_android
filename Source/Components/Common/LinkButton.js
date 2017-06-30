@@ -1,12 +1,12 @@
 import React from 'react';
 import {Text, TouchableOpacity, View} from 'react-native';
 
-const LinkButton = ({ onPress, children }) => {
+const LinkButton = ({ jobBoard, jobKey, children }) => {
   const { buttonStyle, textStyle } = styles;
 
   return (
     <View style = {styles.container}>
-    <TouchableOpacity onPress={onPress} style={buttonStyle}>
+    <TouchableOpacity onPress = {() => Linking.openURL(`${jobBoard[jobKey].link}`)} style={buttonStyle}>
       <Text style={textStyle}>
         {children}
       </Text>

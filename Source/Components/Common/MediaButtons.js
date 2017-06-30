@@ -3,6 +3,7 @@ import {View, StyleSheet, TouchableOpacity, Linking} from 'react-native';
 import IonIcon from 'react-native-vector-icons/Ionicons';
 import FontIcon from 'react-native-vector-icons/FontAwesome';
 import MatIcon from 'react-native-vector-icons/MaterialIcons';
+import call from 'react-native-phone-call'
 
 class MediaButtons extends Component {
 

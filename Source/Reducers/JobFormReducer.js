@@ -17,10 +17,8 @@ export default (state = INITIAL_STATE, action) => {
     case JOB_UPDATE:
       return {...state, [action.payload.prop]: action.payload.value}
     case JOB_CREATE:
-      console.log("JOB CREATE SUCCESS")
       return {...state, name:'', contact:'', description: '', title: '', user: '', date: '', link: '', jb: action.payload}
     case JOBS_FETCH_SUCCESS:
-    console.log("job fetch success" + action.payload)
       return {...state, jb: action.payload}
     case JOB_DELETE:
       return {...state, jb: action.payload}

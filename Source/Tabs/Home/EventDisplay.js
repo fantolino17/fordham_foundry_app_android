@@ -1,7 +1,7 @@
 import React from 'react'
-import {StyleSheet, Text, View, TouchableOpacity, Button} from 'react-native'
+import {StyleSheet, Text, View, TouchableOpacity, Linking} from 'react-native'
 import {connect} from 'react-redux';
-import {Card, CardSection, Confirm} from '../../Components/Common'
+import {Card, CardSection, Confirm, EventButton} from '../../Components/Common'
 
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -18,27 +18,41 @@ const renderAddToCalender = (title, date, time, location,
       )
 }
 
-const EventDisplay = ({title, location, date, time,
+  const renderButton = (link) => {
+    return(
+      <EventButton onPress={ () => Linking.openURL(link) }>
+        Learn more
+      </EventButton>
+   )
+  }
+
+const EventDisplay = ({title, location, date, time, link,
                       alarm_year, alarm_month, alarm_day, alarm_hour, alarm_min, remindMe}) => {
 
   return (
-      <Card justifyContent = "center">
+    
         <View style = {styles.container}>
-        <View>
-          {title!==null ? <Text style = {styles.titleStyle}>{title}</Text> : <Text style = {styles.titleStyle}>The title is not specified</Text>}
-          {location!==null ? <Text style = {styles.whereStyle}>{location}</Text> : <Text style = {styles.whereStyle}>The location is not specified</Text>}
-        </View>
-        <View flexDirection = "row" alignItems = "center" marginBottom = {10}>
-          <View>
-            {date!==null ? <Text style = {styles.dateStyle}>{date} @ </Text> : <Text style = {styles.dateStyle}>The date is not specified</Text>}
+          <View alignItems = "center">
+            {title!==null ? <Text style = {styles.titleStyle}>{title}</Text> : <Text style = {styles.titleStyle}>The title is not specified</Text>}
+            {location!==null ? <Text style = {styles.whereStyle}>{location}</Text> : <Text style = {styles.whereStyle}>The location is not specified</Text>}
           </View>
-          {time!==null ? <Text style = {styles.whenStyle}>{time}</Text> : <Text style = {styles.whenStyle}>The time is not specified</Text>}
+          <View flexDirection = "row" alignItems = "center" marginBottom = {5}>
+            <View>
+              {date!==null ? <Text style = {styles.dateStyle}>{date} @ </Text> : <Text style = {styles.dateStyle}>The date is not specified</Text>}
+            </View>
+            {time!==null ? <Text style = {styles.whenStyle}>{time}</Text> : <Text style = {styles.whenStyle}>The time is not specified</Text>}
+          </View>
+          
+          <View style={{flexDirection: 'row', padding: 5}}>
+
+          <View>{link!=="" ? renderButton(link) : <Text></Text>}</View>
+          <View width={5} /> 
+          <View>{renderAddToCalender(title, date, time, location,
+                            alarm_year, alarm_month, alarm_day, alarm_hour, alarm_min, remindMe)}
+          </View>
+          </View>
         </View>
-       
-        {renderAddToCalender(title, date, time, location, 
-                          alarm_year, alarm_month, alarm_day, alarm_hour, alarm_min, remindMe)}
-        </View>
-      </Card>
+      
   )
 }
 
@@ -46,6 +60,8 @@ const styles = StyleSheet.create ({
   container: {
     padding: 5,
     alignItems: 'center',
+    justifyContent: 'center',
+    borderBottomWidth: StyleSheet.hairlineWidth
     //justifyContent: 'center'
     //backgroundColor: "#"
   },

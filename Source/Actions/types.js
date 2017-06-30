@@ -9,7 +9,7 @@ export const NO_USER = 'no_user'
 export const NEW_USER = 'new_user'
 export const LOGGEDIN_USER = 'loggedin_user'
 export const EXISTS_FAIL = 'exists_fail'
-
+export const IS_EMPTY = 'is_empty'
 
 export const JOB_UPDATE = 'job_update'
 export const JOB_CREATE = 'job_create'

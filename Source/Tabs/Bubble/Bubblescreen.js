@@ -34,7 +34,7 @@ class HomeScreen extends Component {
 
 	render () {
 		return (
-			<ViewContainer>
+			<View flex={1}>
 			<ScrollView style = {styles.container}>
 			<ImageSlider 
 				images = {[
@@ -93,7 +93,7 @@ class HomeScreen extends Component {
 			</View>
 			</ScrollView>
 			<MediaButtons/>
-			</ViewContainer>
+			</View>
 
 			);
 	}
