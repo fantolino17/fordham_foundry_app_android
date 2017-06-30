@@ -1,4 +1,4 @@
-import {EMAIL_CHANGED, PASSWORD_CHANGED, LOGIN_USER_SUCCESS, LOGIN_USER_FAIL,LOGIN_USER, EXISTS_FAIL, NO_USER, NEW_USER, LOGOUT_USER_SUCCESS, LOGGEDIN_USER} from './types' 
+import {EMAIL_CHANGED, PASSWORD_CHANGED, IS_EMPTY,LOGIN_USER_SUCCESS, LOGIN_USER_FAIL,LOGIN_USER, EXISTS_FAIL, NO_USER, NEW_USER, LOGOUT_USER_SUCCESS, LOGGEDIN_USER} from './types' 
 import {Actions} from 'react-native-router-flux'
 import firebase from 'firebase'
 
@@ -17,6 +17,14 @@ export const passwordChanged = (text) => {
 }
 //Pass the second part a "newUser" prop to display "Account created!"
 export const loginUser = ({email, password}) => {
+    if (email == '', password == '') {
+    return(dispatch) =>{
+      isEmpty(email,password),
+      alert ("Sign In By Entering an Email and Password!")
+    }
+  }
+  else
+  {
   return (dispatch) => {
     dispatch({type: LOGIN_USER})
     firebase.auth().signInWithEmailAndPassword(email,password)
@@ -25,9 +33,18 @@ export const loginUser = ({email, password}) => {
         )
   }
 }
+}
 
 export const newUser = ({email, password}) => {
-  return (dispatch) => {
+  if (email == '', password == '') {
+    return(dispatch) => {
+      isEmpty(email,password),
+      alert ("Sign Up By Entering an Email and Password!")
+  }
+  }
+  else
+  {
+   return (dispatch) => {
     dispatch({type: NEW_USER})
     firebase.auth().createUserWithEmailAndPassword(email, password)
       .then (() => {alert ('Your Account Was Created!');
@@ -40,8 +57,20 @@ export const newUser = ({email, password}) => {
 
       })
       .catch (() => existsFail(dispatch))
+    
+  }
   }
 }
+
+
+export const isEmpty = ({email, password}) => {
+  return (dispatch) => {
+    dispatch({type: IS_EMPTY})
+    
+  }
+}
+
+
 
 export const noUser = (dispatch) => {
   dispatch ({

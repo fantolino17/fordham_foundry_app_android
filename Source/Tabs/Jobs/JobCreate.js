@@ -25,14 +25,16 @@ class JobCreate extends Component {
       const {currentUser} = firebase.auth()
       this.props.jobCreate({
         name: name || 'No Name Provided', 
-        contact: contact || 'No Contact Provided', 
+        contact: contact || '', 
         description: description || 'No Description Provided', 
         title: title || 'No Title Provided',
         link: link || '',
         user: currentUser.uid || null,
       })
+      alert('Job Created!')
     }else{
-      this.setState({showModal: true})
+      //this.setState({showModal: true})
+      alert('You Must Sign in To Post Jobs!')
     }
 }
 

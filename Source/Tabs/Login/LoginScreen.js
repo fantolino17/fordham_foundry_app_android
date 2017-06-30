@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
-import LoginForm from '../../Components/LoginForm';
-import {Text, View, Image, KeyboardAvoidingView} from 'react-native';
+import LoginForm from './LoginForm';
+import {Text, View, Image} from 'react-native';
 import {logoutUser, loggedInUser} from '../../Actions';
 import {connect} from 'react-redux';
 import firebase from 'firebase';
+import LogoutScreen from './LogoutScreen'
 
 import NavBar from '../../Components/Header/NavBar';
 import ViewContainer from '../../Components/Common/ViewContainer';
@@ -34,17 +35,19 @@ class LoginScreen extends Component {
             <View alignItems = "center">
                 <Image source = {require('../../../Images/logo.png')} 
                   style={{
-                  width: 260,
-                  height: 260,
+                  width: 200,
+                  height: 200,
                   }}/>
             </View>
 
-            <View>
+              <View>
               <Text style = {styles.headTextStyle}>
                 {firebase.auth().currentUser.email}
               </Text>
              </View>
-              <Button onPress={(this.onLogOut.bind(this))}> Log out </Button>
+             <View>
+               <LogoutScreen />
+             </View>
           </View>
         )
       default:
@@ -55,7 +58,6 @@ class LoginScreen extends Component {
   render(){
     return (
     	<ViewContainer>
-			
       		{this.renderContent()}
       	</ViewContainer>
     )
@@ -65,9 +67,11 @@ class LoginScreen extends Component {
 const styles = ({
   headTextStyle: {
     padding: 10,
-    fontSize:  10,
+    fontSize:  25,
     textAlign: 'center',
-    color: 'black'
+    fontFamily: 'GillSans-Light',
+    color: 'black',
+    fontWeight: '300'
   }
 });
 

@@ -1,4 +1,4 @@
-import {EMAIL_CHANGED, PASSWORD_CHANGED,LOGIN_USER_SUCCESS, NO_USER, NEW_USER, EXISTS_FAIL, LOGIN_USER_FAIL,LOGIN_USER, LOGOUT_USER_SUCCESS, LOGGEDIN_USER} from '../Actions/types'
+import {EMAIL_CHANGED, PASSWORD_CHANGED,LOGIN_USER_SUCCESS, NO_USER, IS_EMPTY, NEW_USER, EXISTS_FAIL, LOGIN_USER_FAIL,LOGIN_USER, LOGOUT_USER_SUCCESS, LOGGEDIN_USER} from '../Actions/types'
 const INITIAL_STATE = {
   email: '', 
   password: '', 
@@ -31,6 +31,8 @@ export default (state = INITIAL_STATE, action) => {
       return {...state, ...INITIAL_STATE, loading: true, email: '', password: ''}
     case EXISTS_FAIL:
       return {...state, error: "User Exists Already", password: '', loading: false} 
+    case IS_EMPTY: 
+      return {...state, ...INITIAL_STATE, password:'', loading: false}
     default:
       return state
   }

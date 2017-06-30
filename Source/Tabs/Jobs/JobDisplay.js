@@ -2,9 +2,16 @@ import React from 'react';
 import {Text, View, Linking, TouchableOpacity, StyleSheet} from 'react-native';
 import {connect} from 'react-redux';
 
-import {CardSection, Button, ButtonCont, LinkButton, DeleteButton} from '../../Components/Common';
+import {CardSection, Button, ButtonCont, LinkButton, DeleteButton, ClickEmail} from '../../Components/Common';
 
-const renderButton = (canDelete, jobKey, jobDelete) => {    
+const renderButton = (canDelete, jobKey, jobDelete) => {  
+
+
+  closeModal = (jobkey) => {
+    jobDelete(jobkey)
+    onReturn()
+  }
+
   if(canDelete)
     return(
       <View borderTopWidth = {StyleSheet.hairlineWidth}>
@@ -15,43 +22,60 @@ const renderButton = (canDelete, jobKey, jobDelete) => {
     )
 }
 
-const showButton = (jobBoard, jobKey) => 
+const showLinkButton = (jobBoard, jobKey) => 
 {
-    if(!jobBoard.hasOwnProperty(jobKey))
-    {
+    if(!jobBoard.hasOwnProperty(jobKey)) {
       return
     } 
-    else if(jobBoard[jobKey].link === '')
-    {
+    else if(jobBoard[jobKey].link === '') {
       return
     }
     else {
       return (
-        <LinkButton onPress = {() => Linking.openURL(`${jobBoard[jobKey].link}`)}>Learn more</LinkButton>
+        <LinkButton jobBoard={jobBoard} jobKey={jobKey}>Learn more</LinkButton>
       )
   }
 }
-    
+
+const showEmailButton = (jobBoard, jobKey) => 
+{
+    if(!jobBoard.hasOwnProperty(jobKey)) {
+      return
+    } 
+    else if(jobBoard[jobKey].contact === '') {
+      return
+    }
+    else {
+      return (
+        <ClickEmail onPress={() => Linking.openURL('mailto:{`${jobBoard[jobKey].contact`}')}>
+            {`${jobBoard[jobKey].contact}`}
+        </ClickEmail>
+      )
+  }
+}
+
+
 
 const JobDisplay = ({jobBoard, jobKey, canDelete, jobDelete}) => {
-  if(jobBoard === null){
+  if(jobBoard === null) {
     return null
   }
   return (
     <View>
         <View style = {styles.titleandname}>
-        {jobBoard.hasOwnProperty(jobKey) ? <Text style = {styles.titleStyle}>{`${jobBoard[jobKey].title}`}</Text>:<Text></Text>}
-        {jobBoard.hasOwnProperty(jobKey) ? <Text style = {styles.nameStyle}>{`${jobBoard[jobKey].name}`}</Text>:<Text></Text>}
+          {jobBoard.hasOwnProperty(jobKey) ? <Text style = {styles.titleStyle}>{`${jobBoard[jobKey].title}`}</Text>:<Text></Text>}
+          {jobBoard.hasOwnProperty(jobKey) ? <Text style = {styles.nameStyle}>{`${jobBoard[jobKey].name}`}</Text>:<Text></Text>}
         </View>
-        <View style = {styles.desc}>
-        {jobBoard.hasOwnProperty(jobKey) ? <Text style = {styles.descStyle}>{jobBoard[jobKey].description}</Text>:<Text></Text>}
-        </View>
-        <View style = {styles.contactCont}>
-        {jobBoard.hasOwnProperty(jobKey) ? <Text style = {styles.contactStyle}>{jobBoard[jobKey].contact}</Text>:<Text></Text>}
-        </View>
-        {showButton(jobBoard, jobKey)}
         
-
+        <View style = {styles.desc}>
+          {jobBoard.hasOwnProperty(jobKey) ? <Text style = {styles.descStyle}>{jobBoard[jobKey].description}</Text>:<Text></Text>}
+        </View>
+        
+        <View style = {styles.contactCont}>
+          {showEmailButton(jobBoard,jobKey)}     
+        </View>  
+        
+        {showLinkButton(jobBoard, jobKey)}
         {canDelete ? renderButton(canDelete, jobKey, jobDelete):<Text></Text>}
 
     </View>

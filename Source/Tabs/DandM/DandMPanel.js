@@ -5,23 +5,25 @@ import MatIcon from 'react-native-vector-icons/MaterialIcons';
 var arrofImages = [
     require('../../../Images/ALBartosic.png'),
     require('../../../Images/anthonyp.jpg'),
+    require('../../../Images/BillCatalano.png'),
     require('../../../Images/LIPhotoCMeyer.jpg'),
     require('../../../Images/Christine_Janssen.jpg'),
     require('../../../Images/Enzo.jpg'),
     require('../../../Images/KevinMcQuillan.png'),
-    require('../../../Images/fordham-rams-logo.png'),
-    require('../../../Images/MichaelMcSherry.png'),
+    require('../../../Images/MariellaSypa.jpg'),
+    require('../../../Images/M_McSherry_25.jpg'),
     require('../../../Images/MichaelPriest.png'),
     require('../../../Images/image1.jpg'),
     require('../../../Images/NicolaCorzine.png'),
     require('../../../Images/NicoleJohnson.png'),
     require('../../../Images/shaunjohnsonsquare.jpg'),
-    require('../../../Images/fordham-rams-logo.png'),
+    require('../../../Images/Weiyu.jpg'),
 ];
 
 var arrofEmails = [
   "mailto:fordhamfoundry@foundry.edu?subject=Hoping to contact Albert J. Bartosic",
   "mailto:fordhamfoundry@foundry.edu?subject=Hoping to contact Anthony Parente",
+  "mailto:fordhamfoundry@foundry.edu?subject=Hoping to contact Bill Catalano",
   "mailto:fordhamfoundry@foundry.edu?subject=Hoping to contact Chris Meyer",
   "mailto:fordhamfoundry@foundry.edu?subject=Hoping to contact Christine Janssen",
   "mailto:fordhamfoundry@foundry.edu?subject=Hoping to contact Enzo Obeso",

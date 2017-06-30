@@ -7,13 +7,14 @@ import {jobUpdate} from '../../Actions';
 class JobForm extends Component{
   render(){
     return (
+      <ScrollView>
         <KeyboardAvoidingView
         behavior="height"
         keyboardVerticalOffset="0">
           <View style = {styles.containerStyle}>
           <Input 
             label="Job Title"
-            placeholder="Title/Position"
+            placeholder="title/position"
             value={this.props.title}
             onChangeText={text => this.props.jobUpdate({prop: 'title', value: text})}
           />
@@ -22,26 +23,27 @@ class JobForm extends Component{
           <View style = {styles.containerStyle}>
           <Input 
             label="Business/Name:"
-            placeholder="your (business) name here"
+            placeholder="your business/name here"
             value={this.props.name}
             onChangeText={text => this.props.jobUpdate({prop: 'name', value: text})}
           />
           </View>
         
           <View style = {styles.containerStyle}>
-          <Input 
+          <Input
             label="Description:"
             placeholder="Lookin' for..."
             value={this.props.description}
             onChangeText={text => this.props.jobUpdate({prop: 'description', value: text})}
             multiline = {true}
             height = {60}
+            maxLength = {550}
           />
           </View>
 
           <View style = {styles.containerStyle}>
           <Input 
-            label="Contact:"
+            label="Email:"
             placeholder="user@user.com"
             value={this.props.contact}
             onChangeText={text => this.props.jobUpdate({prop: 'contact', value: text})}
@@ -57,6 +59,7 @@ class JobForm extends Component{
           />
           </View>
         </KeyboardAvoidingView>
+        </ScrollView>
     )
   }
 }

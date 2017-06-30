@@ -21,8 +21,7 @@ export const readEvents = () => {
 //pass in date somehow
 
 export const remindMe = (title, date, time, location, alarm_year, alarm_month, alarm_day, alarm_hour, alarm_min) => {
-  console.log("remind me")
-
+  
   return (dispatch) => {
 
     PushNotification.configure({

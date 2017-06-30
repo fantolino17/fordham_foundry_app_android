@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Text, View, ListView, StyleSheet} from 'react-native';
 
 import FFBusRow from './FFBusRow';
-import data from '../../Reducers/Json/FFBus';
+import data from '../../Data/FFBus';
 
 class FFBusList extends Component {
 	constructor() {
