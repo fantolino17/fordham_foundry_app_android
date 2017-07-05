@@ -14,4 +14,5 @@ export * from './LoginInput'
 export * from './EventButton'
 export * from './UpdateButton'
 export * from './ClickEmail'
+export * from './ExitButton'
 //Can import folder, will import this file bc named index

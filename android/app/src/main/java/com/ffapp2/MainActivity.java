@@ -1,4 +1,4 @@
-package com.ffappv1;
+package com.ffapp2;
 
 import com.facebook.react.ReactActivity;
 

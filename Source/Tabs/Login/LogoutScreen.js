@@ -14,7 +14,7 @@ class LogoutScreen extends Component {
                     </View>
                     <View height = {70}/>
                         <ClickEmail onPress = {() => Linking.openURL('https://goo.gl/forms/Gv0ZJiEMQbzauTOo1')}>
-                        <Text style = {styles.feedbackText}>Leave us feedback by clicking here!</Text>
+                            <Text style = {styles.feedbackText}>Leave us feedback by clicking here!</Text>
                         </ClickEmail>
                 </View>
             );

@@ -1,16 +1,16 @@
-package com.ffappv1;
+package com.ffapp2;
 
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
-import is.uncommon.rn.widgets.TabbedViewPagerAndroidPackage;
-import com.BV.LinearGradient.LinearGradientPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
+import is.uncommon.rn.widgets.TabbedViewPagerAndroidPackage;
+import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage;
+import com.BV.LinearGradient.LinearGradientPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
-import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage;  // <--- Import Package
 
 import java.util.Arrays;
 import java.util.List;
@@ -27,10 +27,10 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new TabbedViewPagerAndroidPackage(),
-            new LinearGradientPackage(),
             new VectorIconsPackage(),
-              new ReactNativePushNotificationPackage() 
+            new TabbedViewPagerAndroidPackage(),
+            new ReactNativePushNotificationPackage(),
+            new LinearGradientPackage()
       );
     }
   };

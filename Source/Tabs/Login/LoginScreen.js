@@ -46,7 +46,7 @@ class LoginScreen extends Component {
               </Text>
              </View>
              <View>
-               <LogoutScreen />
+               <LogoutScreen logoutFunc={this.props.logoutUser}/>
              </View>
           </View>
         )

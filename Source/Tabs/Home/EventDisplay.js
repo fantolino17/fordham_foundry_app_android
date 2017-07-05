@@ -62,8 +62,6 @@ const styles = StyleSheet.create ({
     alignItems: 'center',
     justifyContent: 'center',
     borderBottomWidth: StyleSheet.hairlineWidth
-    //justifyContent: 'center'
-    //backgroundColor: "#"
   },
   buttonCont: {
     height: 45,

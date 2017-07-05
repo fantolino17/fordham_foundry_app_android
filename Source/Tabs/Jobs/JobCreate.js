@@ -33,7 +33,6 @@ class JobCreate extends Component {
       })
       alert('Job Created!')
     }else{
-      //this.setState({showModal: true})
       alert('You Must Sign in To Post Jobs!')
     }
 }
@@ -42,18 +41,15 @@ class JobCreate extends Component {
     this.props.fetchJobs()
   }
 
-
   render(){
     return (
       <View>
-      
         <JobForm {...this.props}/>
-      
-          <View paddingTop = {15} alignItems = "center">
+        <View paddingTop = {15} alignItems = "center">
           <Button onPress={this.onButtonPress.bind(this)}>
             Create
           </Button>
-          </View>
+        </View>
       </View>
     )
   }

@@ -4,7 +4,7 @@ import {Text, View, StyleSheet, Linking} from 'react-native';
 import NavBar from '../../Components/Header/NavBar';
 import ViewContainer from '../../Components/Common/ViewContainer';
 import DandMList from './DandMList';
-import {Button} from '../../Components/Common';
+import {Button, ClickEmail} from '../../Components/Common';
 
 class DandMscreen extends Component {
 
@@ -12,6 +12,11 @@ class DandMscreen extends Component {
 		return (
 			<ViewContainer>
 				<NavBar/>
+				<View style={{alignItems:'center', paddingBottom:5}}>
+				<ClickEmail onPress = {() => Linking.openURL('https://goo.gl/forms/Gv0ZJiEMQbzauTOo1')}>
+          <Text style = {styles.feedbackText}>Leave us feedback by clicking here!</Text>
+        </ClickEmail>
+				</View>
 				<View style = {styles.container}>
 					<Text style = {styles.textStyle}> Click the rows to learn more about each mentor </Text>
 				</View>
@@ -34,7 +39,16 @@ const styles = StyleSheet.create ({
 		fontSize: 16,
 		fontFamily: 'GillSans',
 		textAlign: 'center'
+	},
+	feedbackText: {
+		fontSize: 20,
+		textAlign: 'center',
+		justifyContent: 'center'
 	}
 })
+
+
+
+
 
 export default DandMscreen;
