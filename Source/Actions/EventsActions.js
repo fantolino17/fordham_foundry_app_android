@@ -15,11 +15,6 @@ export const readEvents = () => {
 
 //Write events should be manually added to the database by admin
 
-
-
-//Save 'number' to state?
-//pass in date somehow
-
 export const remindMe = (title, date, time, location, alarm_year, alarm_month, alarm_day, alarm_hour, alarm_min) => {
   
   return (dispatch) => {
