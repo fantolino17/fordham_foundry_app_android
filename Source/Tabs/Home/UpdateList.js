@@ -11,10 +11,6 @@ class UpdateList extends Component {
 		super(props);
 	}
 
-	componentWillMount(){
-		this.props.readUpdates()
-	}
-
 	renderUpdates(){
 		updates = this.props.updates
 

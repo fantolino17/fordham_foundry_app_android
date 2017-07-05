@@ -58,7 +58,7 @@ class LoginForm extends Component{
         <TextInput 
           style = {styles.input}
           autoCapitalize = 'none'
-          autoCorrect = {false}
+          autoCorrect = {true}
           onChangeText = {this.onEmailChange.bind(this)}
           placeholder = "user@example.com"
           placeholderTextColor = 'rgba(0,0,0,0.6)'
@@ -67,7 +67,7 @@ class LoginForm extends Component{
         <TextInput
           style = {styles.input}
           autoCapitalize = 'none'
-         //autoCorrect = 'false'
+          autoCorrect = {false}
           secureTextEntry
           onChangeText = {this.onPasswordChange.bind(this)}
           placeholder = "********"

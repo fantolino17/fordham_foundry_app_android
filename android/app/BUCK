@@ -45,12 +45,12 @@ android_library(
 
 android_build_config(
     name = "build_config",
-    package = "com.ffappv1",
+    package = "com.ffapp2",
 )
 
 android_resource(
     name = "res",
-    package = "com.ffappv1",
+    package = "com.ffapp2",
     res = "src/main/res",
 )
 

@@ -1,16 +1,15 @@
 import React, {Component} from 'react';
-import {Text, ListView, StyleSheet, View, ScrollView, TouchableOpacity, TouchableWithoutFeedback} from 'react-native';
+import {Text, ListView, StyleSheet, View, ScrollView, TouchableOpacity, TouchableWithoutFeedback, Linking} from 'react-native';
 import {connect} from 'react-redux';
 import {fetchJobs, jobDelete} from '../../Actions';
 import JobForm from './JobForm';
 import firebase from 'firebase';
 
-//import * as actions from '../Actions';
 import JobListItem from './JobListItem';
 import JobSection from './JobSection';
 import JobCreate from './JobCreate';
 import {JobDisplay} from './JobDisplay';
-import {Card, CardSection, Button, ButtonCont, Confirm, CSCol} from '../../Components/Common';
+import {Card, CardSection, Button, ButtonCont, Confirm, CSCol, ClickEmail} from '../../Components/Common';
 import ViewContainer from '../../Components/Common/ViewContainer';
 
 class JobList extends Component {
@@ -90,19 +89,45 @@ class JobList extends Component {
 	}
 
 
+	checkIf() {
+		if (this.props.loading){
+			return <Spinner size="large"/>
+		}
+		else if(this.props.jb === null)
+		{	
+			if(this.state.showDesModal === true)
+			{	
+				{this.onReturn()}
+			}
+			return (
+				<View alignItems = "center">
+					<Text> No Jobs Posted </Text>
+				</View>
+			);
+		}
+		else {
+			return (
+				this.fetchJobBoard()
+			);
+		}
+	}
+
 	render() {
 
 		return(
-			<View style={{flex:1}}>
+			<View style={{flex:1, alignItems: 'center'}}>
+				<View style={{paddingBottom:5}}>
+					<ClickEmail onPress = {() => Linking.openURL('https://goo.gl/forms/Gv0ZJiEMQbzauTOo1')}>
+						<Text style = {styles.feedbackText}>Leave us feedback by clicking here!</Text>
+					</ClickEmail>
+				</View>
 				<View  alignItems = "center" paddingBottom = {5} borderBottomWidth = {StyleSheet.hairlineWidth}>
 					<Button onPress={this.renderModal.bind(this)}>
 					Post to the Job Board!
 					</Button>
 				</View>
 
-				{this.props.jb===null ? <Text>No Jobs Posted</Text>: <Text></Text>}
-
-				{this.fetchJobBoard()}
+				{this.checkIf()}
 				
 				<Confirm
 					visible={this.state.showModal}
@@ -115,7 +140,13 @@ class JobList extends Component {
 					visible={this.state.showDesModal}
 					onReturn={this.onReturn.bind(this)}
 				>
-					<JobDisplay jobBoard={this.props.jb} jobKey={this.state.curKey} canDelete={this.state.canDelete} jobDelete={this.props.jobDelete} />
+					<JobDisplay 
+						visible={this.state.showDesModal}
+						onReturn={this.onReturn.bind(this)}
+						jobBoard={this.props.jb} 
+						jobKey={this.state.curKey} 
+						canDelete={this.state.canDelete} 
+						jobDelete={this.props.jobDelete} />
 				</Confirm>
 			</View>
 		);
@@ -165,12 +196,16 @@ const styles = StyleSheet.create({
 		fontWeight: 'bold'
   },
   userJobStyle:{
-	fontSize: 18,
-	paddingLeft: 8,
-	color: '#4AB312',
-	fontWeight: 'bold',
-	fontFamily: "GillSans"
-  }
+		fontSize: 18,
+		paddingLeft: 8,
+		color: '#4AB312',
+		fontWeight: 'bold',
+		fontFamily: "GillSans"
+  },
+		feedbackText: {
+			fontSize: 20,
+			textAlign: 'center'
+	}
 });
 
 const mapStateToProps = state => {

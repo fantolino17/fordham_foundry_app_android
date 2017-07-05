@@ -15,7 +15,8 @@ const ClickEmail = ({onPress, children}) => {
 const styles = {
 	emailText: {
 		color: 'blue',
-		fontSize: 14
+		fontSize: 14,
+		alignItems: 'center'
 	}
 }
 

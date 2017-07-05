@@ -8,7 +8,6 @@ import Jobscreen from '../Tabs/Jobs/Jobscreen';
 import Bubblescreen from '../Tabs/Bubble/Bubblescreen';
 import FFBusscreen from '../Tabs/Bubble/FFBusscreen';
 import DandMscreen from '../Tabs/DandM/DandMscreen';
-//import Chatscreen from '../Tabs/Chat/Chatscreen';
 import LoginScreen from '../Tabs/Login/LoginScreen';
 
 export const FFBusStack = StackNavigator ({
@@ -74,10 +73,7 @@ export const Tabs = TabNavigator ({
 	Bubble: {
 		screen: FFBusStack,
 		navigationOptions: {
-			/*tabBarIcon: <Image source = {require('../../Images/bubbleicon.png')}
-						style = {{height: 50, width: 40}}/>*/
 			tabBarIcon: ({focused}) => <Image source = {focused ? require('../../Images/bubbleclickedon.png'):require('../../Images/bubbleiconbetter.png')} style = {{height: 30, width: 28, marginTop: 5}}/>
-			//tabBarIcon: ({tintColor, focused}) => <Icon name  = {focused ? "ios-information-circle": "ios-information-circle-outline"} size = {38} color = {focused? "darkred":"black"}/>
 		}
 	},
 
@@ -100,10 +96,8 @@ export const Tabs = TabNavigator ({
 },
 
 	{ 
-		initialRouteName: 'Bubble',
+		initialRouteName: 'Home',
 		tabBarOptions: {
-			//activeTintColor: "gold",
-			//inactiveTintColor: "white",
 			showLabel: false,
 			showIcon: true,
 			iconColor: "black",

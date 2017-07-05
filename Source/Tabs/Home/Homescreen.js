@@ -1,5 +1,6 @@
 import React, {PureComponent} from 'react';
-import {Text, View,StyleSheet, ScrollView, ViewPagerAndroid} from 'react-native';
+import {Text, View,StyleSheet, ScrollView, ViewPagerAndroid, Linking} from 'react-native';
+import {connect} from 'react-redux'
 
 import ViewContainer from '../../Components/Common/ViewContainer';
 import NavBar from '../../Components/Header/NavBar';
@@ -10,12 +11,8 @@ import {Header} from '../../Components/Common'
 import { TabViewAnimated, TabBar, SceneMap } from 'react-native-tab-view';
 import TabbedViewPager from 'react-native-tabbed-view-pager-android';
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button';
-
-//import ScrollableTabMenu from 'react-native-scrollable-tab-menu'
-// import Tabs from 'react-native-tabs';
-
-// const FirstRoute = () => <UpdateList />;
-// const SecondRoute = () => <EventList />;
+import {readUpdates} from '../../Actions'
+import {ClickEmail, Spinner} from '../../Components/Common'
 
 
 var radio_props = [
@@ -24,12 +21,15 @@ var radio_props = [
 ];
 
 class Homescreen extends PureComponent {
-constructor(props){
-	super(props)
-	this.state = {
-	display: 0
-	}
-}
+  constructor(props){
+    super(props)
+    this.state = {
+    display: 0
+    }
+  }
+  componentWillMount(){
+    this.props.readUpdates()
+  }
 
   getInitialState(){
     return {
@@ -37,12 +37,29 @@ constructor(props){
     }
   }
 
+  checkLoading(){
+    if(this.props.loading) {
+      return (
+        <View style={{paddingTop: 40}}>
+          <Spinner size='large'/>
+        </View>
+      )
+    }else {
+      return(
+				  this.state.display===0 ? <UpdateList /> : <EventList />
+      )
+    }
+
+  }
+
   render() {
     return (
-
       <ViewContainer>
 				<NavBar />
-				<View style = {{alignItems: 'center'}}>
+        <View style = {{alignItems: 'center'}}>
+        <ClickEmail onPress = {() => Linking.openURL('https://goo.gl/forms/Gv0ZJiEMQbzauTOo1')}>
+          <Text style = {styles.feedbackText}>Leave us feedback by clicking here!</Text>
+        </ClickEmail>
         <RadioForm
           radio_props={radio_props}
           initial={0}
@@ -55,70 +72,26 @@ constructor(props){
 				</RadioForm>
 
 				</View>
-				{this.state.display===0 ? <UpdateList /> : <EventList />}
+        <View>
+          {this.checkLoading()}
+        </View>
       </ViewContainer>
     );
   }
 }
 
 
+const styles = {
+    feedbackText: {
+        fontSize: 20,
+        textAlign: 'center'
+    }
+}
 
 
+mapStateToProps = state => {
+  const {loading} = state.updateList
+  return {loading}
+}
 
-
-//   state = {
-//     index: 0,
-//     routes: [
-//       { key: '1', title: 'Events' },
-//       { key: '2', title: 'Updates' },
-//     ],
-//   };
-
-//   _handleChangeTab = index => this.setState({ index });
-
-//   _renderHeader = props => <TabBar {...props} />;
-
-//   _renderScene = SceneMap({
-//     '1': FirstRoute,
-//     '2': SecondRoute,
-//   });
-
-//   render() {
-//     return (
-//       <TabViewAnimated
-//         style={styles.container}
-//         navigationState={this.state}
-//         renderScene={this._renderScene}
-//         renderHeader={this._renderHeader}
-//         onRequestChangeTab={this._handleChangeTab}
-//       />
-//     );
-//   }
-// }
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//   },
-// });
-
-// render(){
-// return(
-// 			<ViewContainer>
-// 				<NavBar/>
-// 				<ScrollView style={{flex:1}}> 
-// 					{/*<ScrollableTabView tabBarTextStyle = {{fontSize: 20, fontFamily: 'GillSans'}}>*/}
-// 					<View tabLabel = "Updates">
-// 						<UpdateList />
-// 					</View>
-// 					<View tabLabel = "Events">
-// 						<EventList />
-// 					</View>
-// 					{/*</ScrollableTabView>*/}
-// 				</ScrollView>
-// 			</ViewContainer>
-// 		 )
-// 	}
-// }
-
-export default Homescreen;
+export default connect(mapStateToProps,{readUpdates})(Homescreen)

@@ -28,7 +28,6 @@ class FFBusPanel extends Component{
             FFBusid         : props.FFBusid,
             FFBusname       : props.FFBusname,
             expanded    : false,
-            //animation   : new Animated.Value()
         };
 
     }
@@ -53,14 +52,6 @@ class FFBusPanel extends Component{
             expanded : !this.state.expanded  //Step 2
         });
 
-        /*this.state.animation.setValue(initialValue);  //Step 3
-        Animated.spring(     //Step 4
-            this.state.animation,
-            {
-                toValue: finalValue
-            }
-        ).start();*/
-        
     }
 
     renderView() {

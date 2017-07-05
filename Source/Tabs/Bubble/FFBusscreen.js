@@ -19,7 +19,7 @@ class FFBusscreen extends Component {
 
 const styles = StyleSheet.create ({
 	container : {
-		backgroundColor: 'rgba(0,0,0,0.6)',
+		backgroundColor: 'maroon',
 		alignItems: 'center'
 	},
 	textStyle: {
