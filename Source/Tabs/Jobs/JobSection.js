@@ -25,9 +25,7 @@ const styles = {
 	titleStyle: {
 		fontSize: 18,
 		textAlign: 'center',
-		flex: 1,
-		//position: 'relative'
-   
+		flex: 1,   
 	}
 }
 

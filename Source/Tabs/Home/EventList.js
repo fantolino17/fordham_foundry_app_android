@@ -27,7 +27,7 @@ class EventList extends Component {
 		}
 		else {list = []
 		for(key in events){
-			//const temp = key
+
 			list.push(
 				<EventDisplay 
 				title={key}
