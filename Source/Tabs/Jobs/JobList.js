@@ -165,13 +165,13 @@ const styles = StyleSheet.create({
   	fontSize: 16,
   	paddingLeft: 8,
   	color:'blue',
-	fontWeight: 'bold',
-	fontFamily: "GillSans"
+		fontWeight: 'bold',
+		fontFamily: "GillSans"
   },
   busStyle: {
   	fontSize: 16,
   	paddingLeft: 8,
-	fontFamily: "GillSans"
+		fontFamily: "GillSans"
   },
   dateStyle: {
   	paddingTop: 6,
@@ -186,11 +186,11 @@ const styles = StyleSheet.create({
   },
   jobStyle: {
   	fontSize: 18,
-	paddingLeft: 8,
-	color: 'darkblue',
-	fontWeight: 'bold',
-	fontFamily: "GillSans"
-  },
+		paddingLeft: 8,
+		color: 'darkblue',
+		fontWeight: 'bold',
+		fontFamily: "GillSans"
+	},
   textStyle: {
 		fontSize: 16,
 		fontWeight: 'bold'
