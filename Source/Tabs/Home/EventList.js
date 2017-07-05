@@ -12,7 +12,6 @@ class EventList extends Component {
 			showModal:false,
 			curKey: ''
 		}
-
 	}
 
 	componentWillMount(){
